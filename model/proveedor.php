@@ -1,4 +1,7 @@
 <?php
+
+    namespace Model;
+
     class Proveedor {
 
         private $idProveedor;
