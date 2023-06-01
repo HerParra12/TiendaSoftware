@@ -52,7 +52,7 @@ body {
 
 /*Hide or Show content*/
 .dashboard-container{
-	display:none;
+	display:block;
 }
 
 .inventario-container{
@@ -76,7 +76,7 @@ body {
 }
 
 .empleados-container{
-	display: block;
+	display: none;
 }
 
 /* SIDEBAR */
