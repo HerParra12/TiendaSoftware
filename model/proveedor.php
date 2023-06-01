@@ -1,7 +1,5 @@
 <?php
 
-    namespace Model;
-
     class Proveedor {
 
         private $idProveedor;
@@ -11,12 +9,13 @@
         private $correo;
         private $listaTelefono;
 
-        public function __construct($nit, $nombre, $direccion, $correo) {
-            $this -> $nit = $nit;
-            $this -> $nombre = $nombre;
-            $this -> $direccion = $direccion;
-            $this -> $correo = $correo;
-            $this -> $listaTelefono = array();
+        public function __construct($idProveedor, $nit, $nombre, $direccion, $correo) {
+            $this -> idProveedor = $idProveedor;
+            $this -> nit = $nit;
+            $this -> nombre = $nombre;
+            $this -> direccion = $direccion;
+            $this -> correo = $correo;
+            $this -> listaTelefono = array();
         }
 
         public function __toString() {
