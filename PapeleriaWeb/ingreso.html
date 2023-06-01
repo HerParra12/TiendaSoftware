@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/styleIngreso.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" href="assets/iconIngreso.svg">
+    <title>Bienvenido a la papelería</title>
+</head>
+<body>
+    <div class="container-form sign-up">
+        <div class="welcome-back">
+            <div class="message">
+                <h2>Bienvenido a la papelería de Rosita</h2>
+                <p>Si ya tienes una cuenta por favor inicia sesion aqui</p>
+                <button class="sign-up-btn" id="btn-form-sign-up">Iniciar Sesion</button>
+            </div>
+        </div>
+        <form class="formulario-sign-up" onsubmit="return validateForm()">
+            <h2 class="create-account">Crear una cuenta</h2>
+            <p class="cuenta-gratis">Ingresa tus datos para el registro</p>
+            <input type="text" placeholder="Nombre Completo" pattern="[A-Za-z\s]+" required title="Por favor, ingresa solo letras y espacios">
+            <input type="tel" placeholder="Número de teléfono" pattern="[0-9]{10}" required title="Por favor, ingresa un número de teléfono válido de 10 dígitos">
+            <input type="email" placeholder="Email" required>
+            <input type="text" placeholder="Nombre de usuario" pattern="[A-Za-z0-9]{1,10}" required title="Ingrese una combinación de letras y números sin caracteres especiales (máximo 10 caracteres)">
+            <input type="password" placeholder="Contraseña" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{1,8}$" title="La contraseña debe tener al menos 1 mayúscula, 1 número, 1 caracter especial (!@#$%^&*) y tener una longitud máxima de 8 caracteres" maxlength="8" required>
+            <p class="cuenta-gratis">Selecciona tu rol</p>
+            <select id="opciones" name="opciones"  required>
+                <option value="">-- Selecciona una opción --</option>
+                <option value="nomina">Administrador</option>
+                <option value="compras">Empleado</option>
+            </select>
+            <input type="submit" value="Registrarse" id="btn-form-sign-up">
+        </form>
+    </div>
+    <div class="container-form sign-in">
+        <form class="formulario" onsubmit="return validateForm()">
+            <h2 class="create-account">Iniciar Sesion</h2>
+            <input type="text" placeholder="Nombre de usuario" pattern="[A-Za-z0-9]{1,10}" required>
+            <input type="password" placeholder="Contraseña" pattern="^(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*])[A-Za-z\d!@#$%^&*]{1,8}$" maxlength="8" required>
+            <input type="submit" value="Iniciar Sesion" id="btn-form-sign-in">
+        </form>
+        <div class="welcome-back">
+            <div class="message">
+                <h2>Bienvenido de nuevo</h2>
+                <p>Si aun no tienes una cuenta por favor registrese aqui</p>
+                <button class="sign-in-btn" id="btn-form-sign-in">Registrarse</button>
+            </div>
+        </div>
+    </div>
+    <script src="js/ingreso.js"></script>
+</body>
+</html>
