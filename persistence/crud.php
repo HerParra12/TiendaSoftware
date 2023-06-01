@@ -2,9 +2,9 @@
 
     interface CRUD {
 
-        public function agregar();
-        public function eliminar();
-        public function actualizar();
+        public function agregar($nuevoValor);
+        public function eliminar($id);
+        public function actualizar($id, $nuevoValor);
         public function mostrarLista();
         
     }

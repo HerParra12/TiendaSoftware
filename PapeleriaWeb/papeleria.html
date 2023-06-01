@@ -1,0 +1,810 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/stylePapeleria.css">
+    <link href="https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css" rel="stylesheet"/>
+    <link rel="icon" href="assets/iconPapeleria.svg">
+    <title>La papelería de Rosita</title>
+</head>
+<body>
+	<!-- SIDEBAR -->
+	<section id="sidebar">
+		<a href="#" class="brand">
+			<i class='bx bxs-store-alt' ></i>
+			<span class="text">Papeplería de Rosita</span>
+		</a>
+		<ul class="side-menu top">
+			<li class="active">
+				<a href="#" id="inicio">
+					<i class='bx bxs-widget'></i>
+					<span class="text">Panel de inicio</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" id="inventario">
+					<i class='bx bxs-calculator'></i>
+					<span class="text">Inventario</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" id="ventas">
+					<i class='bx bxs-shopping-bag'></i>
+					<span class="text">Ventas</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" id="compras">
+					<i class='bx bxs-cart'></i>
+					<span class="text">Compras</span>
+				</a>
+			</li>
+			<li>
+				<a href="#" id="pedidos">
+					<i class='bx bxs-detail'></i>
+					<span class="text">Pedidos</span>
+				</a>
+			</li>
+            <li>
+				<a href="#" id="proveedores">
+					<i class='bx bxs-group' ></i>
+					<span class="text">Proveedores</span>
+				</a>
+			</li>
+            <li>
+				<a href="#" id="empleados">
+					<i class='bx bxs-user-detail'></i>
+					<span class="text">Empleados</span>
+				</a>
+			</li>
+		</ul>
+		<ul class="side-menu">
+			<li>
+				<a href="ingreso.html" class="logout">
+					<i class='bx bxs-log-out-circle' ></i>
+					<span class="text">Logout</span>
+				</a>
+			</li>
+		</ul>
+	</section>
+
+	<!-- CONTENT -->
+	<section id="content">
+		<!-- NAVBAR -->
+		<nav>
+			<i class='bx bx-menu' ></i>
+			<form action="#">
+				<div class="form-input">
+					<input type="search" placeholder="Search">
+					<button type="submit" class="search-btn"><i class='bx bx-search' ></i></button>
+				</div>
+			</form>
+            <h3 class="text-h3">Hola, Rosita!</h3>
+			<input type="checkbox" id="switch-mode" hidden>
+			<label for="switch-mode" class="switch-mode"></label>
+		</nav>
+		<!-- NAVBAR -->
+
+		<!-- MAIN -->
+		<main>
+            <div class="dashboard-container">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Panel de inicio</h1>
+                    </div>
+                </div>
+            
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-calendar-check'></i>
+                        <span class="text">
+							<h3 id="fecha"></h3>
+							<p>Fecha actual</p>
+						</span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">
+                            <h3>1</h3>
+                            <p>Empleados</p>
+                        </span>
+                    </li>
+                </ul>
+
+                <div class="table-data">
+                    <div class="order">
+                        <div class="head">
+                            <h3>Movimientos de la papelería</h3>
+                            <i class='bx bx-search'></i>
+                            <i class='bx bx-filter'></i>
+                        </div>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Usuario</th>
+                                    <th>Fecha</th>
+                                    <th>Acción</th>
+                                    <th>Módulo</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>01-05-2023</td>
+                                    <td><span class="status completed">Registrar</span></td>
+                                    <td>Ventas</td>
+                                </tr>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>01-05-2023</td>
+                                    <td><span class="status pending">Eliminar</span></td>
+                                    <td>Pedidos</td>
+                                </tr>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>01-05-2023</td>
+                                    <td><span class="status process">Modificar</span></td>
+                                    <td>Inventario</td>
+                                </tr>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>01-05-2023</td>
+                                    <td><span class="status pending">Eliminar</span></td>
+                                    <td>Proveedores</td>
+                                </tr>
+                                <tr>
+                                    <td>John Doe</td>
+                                    <td>01-05-2023</td>
+                                    <td><span class="status completed">Compras</span></td>
+                                    <td>Ventas</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="todo">
+                        <div class="head">
+                            <h3>Todos</h3>
+                        </div>
+                        <ul class="todo-list" id="todo-list">
+                            <li class="not-completed">
+                                <p>Descargar reporte general semanal</p>
+                            </li>
+                            <li class="completed">
+                                <p>Descargar reporte general mensual</p>
+                            </li>
+                        <!-- Los nuevos elementos <li> se generarán aquí -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="inventario-container">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Inventario</h1>
+                    </div>
+                    <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Download PDF</span>
+                    </a>
+                </div>
+            
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bx-list-check'></i>
+                        <span class="text">
+                            <h3>2834</h3>
+                            <p>Productos</p>
+                        </span>
+                    </li>
+                </ul>
+            
+                <div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Listado de productos</h3>
+							<i class='bx bxs-add-to-queue'></i>
+							<i class='bx bx-filter' ></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Acción</th>
+                                    <th>UPC</th>
+									<th>Nombre del producto</th>
+									<th>Unidades</th>
+									<th>Cantidad</th>
+									<th>Proveedor</th>
+									<th>Monto (c/u)</th>
+									<th>IVA</th>
+									<th>Estado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>012345678912</td>
+									<td>Resma de papel</td>
+									<td>1.5kg</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>012345678912</td>
+									<td>Resma de papel</td>
+									<td>1.5kg</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>012345678912</td>
+									<td>Resma de papel</td>
+									<td>1.5kg</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>012345678912</td>
+									<td>Resma de papel</td>
+									<td>1.5kg</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>012345678912</td>
+									<td>Resma de papel</td>
+									<td>1.5kg</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>012345678912</td>
+									<td>Resma de papel</td>
+									<td>1.5kg</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+            </div>
+
+            <div class="ventas-container">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Ventas</h1>
+                    </div>
+                    <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Download PDF</span>
+                    </a>
+                </div>
+            
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-shopping-bags'></i>
+                        <span class="text">
+                            <h3>2834</h3>
+                            <p>Ventas</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-dollar-circle' ></i>
+                        <span class="text">
+                            <h3>$3'564.256</h3>
+                            <p>Monto total de ventas</p>
+                        </span>
+                    </li>
+                </ul>
+            
+                <div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Historial de ventas</h3>
+							<i class='bx bxs-add-to-queue'></i>
+							<i class='bx bx-filter' ></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Nombre del producto</th>
+									<th>Cantidad</th>
+									<th>Fecha</th>
+									<th>Monto total</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Cartulina en pliego</td>
+									<td>5</td>
+									<td>10-05-2023</td>
+									<td>$ 17.000</td>
+								</tr>
+								<tr>
+									<td>Cartulina en pliego</td>
+									<td>5</td>
+									<td>10-05-2023</td>
+									<td>$ 17.000</td>
+								</tr>
+								<tr>
+									<td>Cartulina en pliego</td>
+									<td>5</td>
+									<td>10-05-2023</td>
+									<td>$ 17.000</td>
+								</tr>
+								<tr>
+									<td>Cartulina en pliego</td>
+									<td>5</td>
+									<td>10-05-2023</td>
+									<td>$ 17.000</td>
+								</tr>
+								<tr>
+									<td>Cartulina en pliego</td>
+									<td>5</td>
+									<td>10-05-2023</td>
+									<td>$ 17.000</td>
+								</tr>
+								<tr>
+									<td>Cartulina en pliego</td>
+									<td>5</td>
+									<td>10-05-2023</td>
+									<td>$ 17.000</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+            </div>
+
+            <div class="compras-container">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Compras</h1>
+                    </div>
+                    <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Download PDF</span>
+                    </a>
+                </div>
+            
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-shopping-bags'></i>
+                        <span class="text">
+                            <h3>2834</h3>
+                            <p>Compras</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-dollar-circle' ></i>
+                        <span class="text">
+                            <h3>$3'564.256</h3>
+                            <p>Monto total de compras</p>
+                        </span>
+                    </li>
+                </ul>
+            
+                <div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Historial de compras</h3>
+							<i class='bx bxs-add-to-queue'></i>
+							<i class='bx bx-filter' ></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>N°. Orden de pedido</th>
+									<th>Fecha</th>
+									<th>Monto total</th>
+                                    <th>Estado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>200000845612</td>
+									<td>10-05-2023</td>
+									<td>$ 280.000</td>
+                                    <td><span class="status completed">Pagado</span></td>
+								</tr>
+								<tr>
+									<td>200000845612</td>
+									<td>10-05-2023</td>
+									<td>$ 280.000</td>
+                                    <td><span class="status pending">Pendiente</span></td>
+								</tr>
+								<tr>
+									<td>200000845612</td>
+									<td>10-05-2023</td>
+									<td>$ 280.000</td>
+                                    <td><span class="status process">En proceso</span></td>
+								</tr>
+								<tr>
+									<td>200000845612</td>
+									<td>10-05-2023</td>
+									<td>$ 280.000</td>
+                                    <td><span class="status completed">Pagado</span></td>
+								</tr>
+								<tr>
+									<td>200000845612</td>
+									<td>10-05-2023</td>
+									<td>$ 280.000</td>
+                                    <td><span class="status pending">Pendiente</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+            </div>
+
+            <div class="pedidos-container">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Pedidos</h1>
+                    </div>
+                    <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Download PDF</span>
+                    </a>
+                </div>
+            
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bx-receipt'></i>
+                        <span class="text">
+                            <h3>2834</h3>
+                            <p>Órdenes de pedido</p>
+                        </span>
+                    </li>
+                    <li>
+                        <i class='bx bxs-dollar-circle' ></i>
+                        <span class="text">
+                            <h3>$3'564.256</h3>
+                            <p>Monto total en pedidos</p>
+                        </span>
+                    </li>
+                </ul>
+            
+                <div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Órdenes de pedido</h3>
+							<i class='bx bxs-add-to-queue'></i>
+							<i class='bx bx-filter' ></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Acción</th>
+									<th>Nombre del producto</th>
+									<th>Cantidad</th>
+									<th>Proveedor</th>
+									<th>Monto</th>
+									<th>IVA</th>
+									<th>Estado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+									<td>Resma de papel</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status process">En proceso</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+									<td>Resma de papel</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status process">En proceso</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+									<td>Resma de papel</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Realizadas</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+									<td>Resma de papel</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Realizadas</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+									<td>Resma de papel</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Realizadas</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+									<td>Resma de papel</td>
+									<td>10</td>
+									<td>Luis Arango</td>
+									<td>$ 24.000</td>
+									<td>19%</td>
+									<td><span class="status completed">Realizadas</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+            </div>
+
+            <div class="proveedores-container">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Proveedores</h1>
+                    </div>
+                    <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Download PDF</span>
+                    </a>
+                </div>
+            
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">
+                            <h3>20</h3>
+                            <p>Proveedores</p>
+                        </span>
+                    </li>
+                </ul>
+            
+                <div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Listado de proveedores</h3>
+							<i class='bx bxs-add-to-queue'></i>
+							<i class='bx bx-filter' ></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Acción</th>
+                                    <th>NIT</th>
+                                    <th>Nombre del proveedor</th>
+                                    <th>Dirección</th>
+                                    <th>Teléfono</th>
+									<th>Correo</th>
+									<th>Nombre del producto que provee</th>
+									<th>Estado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>546124789-8</td>
+									<td>Camila Londoño</td>
+									<td>Cl. x #a-b piso 11</td>
+									<td>3216547898</td>
+									<td>clondono@tienda.com</td>
+									<td>Caja de lápices</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>546124789-8</td>
+									<td>Camila Londoño</td>
+									<td>Cl. x #a-b piso 11</td>
+									<td>3216547898</td>
+									<td>clondono@tienda.com</td>
+									<td>Caja de lápices</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>546124789-8</td>
+									<td>Camila Londoño</td>
+									<td>Cl. x #a-b piso 11</td>
+									<td>3216547898</td>
+									<td>clondono@tienda.com</td>
+									<td>Caja de lápices</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>546124789-8</td>
+									<td>Camila Londoño</td>
+									<td>Cl. x #a-b piso 11</td>
+									<td>3216547898</td>
+									<td>clondono@tienda.com</td>
+									<td>Caja de lápices</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>546124789-8</td>
+									<td>Camila Londoño</td>
+									<td>Cl. x #a-b piso 11</td>
+									<td>3216547898</td>
+									<td>clondono@tienda.com</td>
+									<td>Caja de lápices</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>546124789-8</td>
+									<td>Camila Londoño</td>
+									<td>Cl. x #a-b piso 11</td>
+									<td>3216547898</td>
+									<td>clondono@tienda.com</td>
+									<td>Caja de lápices</td>
+									<td><span class="status completed">Activo</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+            </div>
+
+            <div class="empleados-container">
+                <div class="head-title">
+                    <div class="left">
+                        <h1>Empleados</h1>
+                    </div>
+                    <a href="#" class="btn-download">
+                        <i class='bx bxs-cloud-download'></i>
+                        <span class="text">Download PDF</span>
+                    </a>
+                </div>
+            
+                <ul class="box-info">
+                    <li>
+                        <i class='bx bxs-group'></i>
+                        <span class="text">
+                            <h3>1</h3>
+                            <p>Empleados</p>
+                        </span>
+                    </li>
+                </ul>
+            
+                <div class="table-data">
+					<div class="order">
+						<div class="head">
+							<h3>Listado de empleados</h3>
+							<i class='bx bxs-add-to-queue'></i>
+							<i class='bx bx-filter' ></i>
+						</div>
+						<table>
+							<thead>
+								<tr>
+									<th>Acción</th>
+                                    <th>Nombre completo</th>
+                                    <th>Teléfono</th>
+                                    <th>Correo</th>
+									<th>Nombre de usuario</th>
+                                    <th>Contraseña</th>
+									<th>Estado</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-edit-alt' ></i></button>
+										<button id = "modify-fila" style="border: none; background-color: transparent;"><i class='bx bxs-trash' ></i></button>
+									</td>
+                                    <td>Gladys Serrano</td>
+									<td>3216547898</td>
+									<td>gserrano@gmail.com</td>
+									<td>Gladys</td>
+                                    <td>Gladys$3</td>
+                                    <td><span class="status completed">Activo</span></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+				</div>
+            </div>
+
+
+		</main>
+		<!-- MAIN -->
+	</section>
+	<!-- CONTENT -->
+	
+
+	<script src="js/papeleria.js"></script>
+</body>
+</html>
