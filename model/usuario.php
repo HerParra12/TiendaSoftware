@@ -1,27 +1,30 @@
 <?php
-
+    
     class Usuario {
 
         private $idUsuario;
-        private $primerNombre;
-        private $segundoNombre;
+        private $nombres;
         private $apellidos;
-        private $tipoUsuario;
+        private $role;
+        private $correo;
+        private $fechaNacimiento;
 
-        public function __construct($idUsuario, $primerNombre, $segundoNombre, $apellidos, $tipoUsuario) {
+        public function __construct($idUsuario, $nombres, $apellidos, $role, $correo, $fechaNacimiento) {
             $this -> idUsuario = $idUsuario;
-            $this -> primerNombre = $primerNombre;
-            $this -> segundoNombre = $segundoNombre;
+            $this -> nombres = $nombres;
             $this -> apellidos = $apellidos;
-            $this -> tipoUsuario = $tipoUsuario;
+            $this -> role = $role;
+            $this -> correo = $correo;
+            $this -> fechaNacimiento = $fechaNacimiento;
         }
         
         public function __toString() {
             return "idUsuario: " . $this -> idUsuario . "\n" .
-                   "primer nombre: " . $this -> primerNombre . "\n" .
-                   "segundo nombre: " . $this -> segundoNombre . "\n" .
+                   "nombres: " . $this -> nombres . "\n" . 
                    "apellidos: " . $this -> apellidos . "\n" .
-                   "tipo usuario: " . $this -> tipoUsuario;
+                   "tipo usuario: " . $this -> role . 
+                   "correo: " . $this -> correo . 
+                   "fecha nacimiento: " . $this -> fechaNacimiento;
         }
 
         public function getIdUsuario() {
@@ -32,20 +35,12 @@
             $this -> idUsuario = $idUsuario;
         }
 
-        public function getPrimerNombre() {
-            return $this -> primerNombre;
+        public function getNombres() {
+            return $this -> nombres;
         }
-
-        public function setPrimerNombre($primerNombre) {
-            $this -> primerNombre = $primerNombre;
-        }
-
-        public function getSegundoNombre() {
-            return $this -> segundoNombre;
-        }
-
-        public function setSegundoNombre($segundoNombre) {
-            $this -> segundoNombre = $segundoNombre;
+    
+        public function setNombres($nombres) {
+            $this -> nombres = $nombres;
         }
 
         public function getApellidos() {
@@ -56,13 +51,29 @@
             $this -> apellidos = $apellidos;
         }
 
-        public function getTipoUsuario() {
-            return $this -> tipoUsuario;
+        public function getRole() {
+            return $this -> role;
         }
 
-        public function setTipoUsuario($tipoUsuario) {
-            $this -> tipoUsuario = $tipoUsuario;
+        public function setRole($role) {
+            $this -> role = $role;
         }	
+
+        public function getCorreo() {
+            return $this -> correo;
+        }
+    
+        public function setCorreo($correo) {
+            $this -> correo = $correo;
+        }
+    
+        public function getFechaNacimiento() {
+            return $this -> fechaNacimiento;
+        }
+    
+        public function setFechaNacimiento($fechaNacimiento) {
+            $this -> fechaNacimiento = $fechaNacimiento;
+        }
     }
 
 ?>
