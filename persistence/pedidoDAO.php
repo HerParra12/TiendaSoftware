@@ -17,7 +17,7 @@
 
 		public function agregar($pedido) {
 			try {
-				$query = "INSERT INTO " . $this->tabla . " (id_pedido, id_proveedor, id_producto, id_usuario, fecha_pedido)
+				$query = "INSERT INTO Pedido (id_pedido, id_proveedor, id_producto, id_usuario, fecha_pedido)
 						  VALUES (:idPedido, :idProveedor, :idProducto, :idUsuario, :fechaPedido)";
 
 				$stmt = $this->conexion->prepare($query);
@@ -39,7 +39,7 @@
 
 		public function eliminar($idPedido) {
 			try{
-				$query = "DELETE FROM " . $this->tabla . " WHERE id_pedido = :idPedido";
+				$query = "DELETE FROM Pedido WHERE id_pedido = :idPedido";
 
 				$stmt = $this->conexion->prepare($query);
 				$stmt->bindValue(':idPedido', $idPedido);
@@ -55,7 +55,7 @@
 
 		public function actualizar($pedido) {
 			try{
-				$query = "UPDATE " . $this->tabla . " SET id_proveedor = :idProveedor, id_producto = :idProducto,
+				$query = "UPDATE Pedido SET id_proveedor = :idProveedor, id_producto = :idProducto,
 						  id_usuario = :idUsuario, fecha_pedido = :fechaPedido WHERE id_pedido = :idPedido";
 
 				$stmt = $this->conexion->prepare($query);
