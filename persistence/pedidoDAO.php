@@ -5,7 +5,6 @@
 	require_once 'conexion.php';
 
 	class PedidoDAO implements CRUD {
-
 		private $listaPedidos;
         private $link;
 
