@@ -54,7 +54,7 @@
 
 		public function actualizar($pedido) {
 			try{
-				
+			
 				$query = "UPDATE Pedido SET id_proveedor = :idProveedor, id_producto = :idProducto,
 						  id_usuario = :idUsuario, fecha_pedido = :fechaPedido WHERE id_pedido = :idPedido";
 
