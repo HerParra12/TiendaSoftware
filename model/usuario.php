@@ -8,6 +8,7 @@
         private $role;
         private $correo;
         private $fechaNacimiento;
+        private $listaPedidos;
 
         public function __construct($idUsuario, $nombres, $apellidos, $role, $correo, $fechaNacimiento) {
             $this -> idUsuario = $idUsuario;
@@ -16,6 +17,7 @@
             $this -> role = $role;
             $this -> correo = $correo;
             $this -> fechaNacimiento = $fechaNacimiento;
+            $this -> listaPedidos = array();
         }
         
         public function __toString() {
@@ -73,6 +75,14 @@
     
         public function setFechaNacimiento($fechaNacimiento) {
             $this -> fechaNacimiento = $fechaNacimiento;
+        }
+
+        public function getListaPedidos() {
+            return $this -> listaPedidos;
+        }
+
+        public function setListaPedidos($listaPedidos) {
+            $this -> listaPedidos = $listaPedidos;
         }
     }
 

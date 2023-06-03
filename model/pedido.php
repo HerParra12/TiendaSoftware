@@ -3,20 +3,16 @@
     class Pedido {
 
         private $idPedido;
-        private $idProveedor;
-        private $idProducto;
-        private $idUsuario;
+        private $proveedor;
+        private $usuario;
         private $fecha;
         private $totalPedido;
         private $medioPago;
-        
-        public function __construct() {}
 
-        public function __construct($idPedido, $idProveedor, $idProducto, $idUsuario, $fecha, $totalPedido, $medioPago) {
+        public function __construct($idPedido, $proveedor, $usuario, $fecha, $totalPedido, $medioPago) {
             $this -> idPedido = $idPedido;
-            $this -> idProveedor = $idProveedor;
-            $this -> idProducto = $idProducto;
-            $this -> idUsuario = $idUsuario;
+            $this -> proveedor = $proveedor;
+            $this -> usuario = $usuario;
             $this -> fecha = $fecha;
             $this -> totalPedido = $totalPedido;
             $this -> medioPago = $medioPago;
@@ -24,9 +20,8 @@
 
         public function __toString() {
             return "idPedido: " . $this -> idPedido . "\n" .
-                   "idProveedor: " . $this -> idProveedor . "\n" .
-                   "idProducto: " . $this -> idProducto . "\n" .
-                   "idUsuario: " . $this -> idUsuario . "\n" .
+                   "proveedor: " . $this -> proveedor . "\n" .
+                   "usuario: " . $this -> usuario . "\n" . 
                    "fecha: " . $this -> fecha . "\n" .
                    "total pedido: " . $this -> totalPedido . "\n" .
                    "medio pago: " . $this -> medioPago;
@@ -40,28 +35,20 @@
             $this -> idPedido = $idPedido;
         }
 
-        public function getIdProveedor() {
-            return $this -> idProveedor;
+        public function getProveedor() {
+            return $this -> proveedor;
         }
 
-        public function setIdProveedor($idProveedor) {
-            $this -> idProveedor = $idProveedor;
+        public function setProveedor($proveedor) {
+            $this -> proveedor = $proveedor;
         }
 
-        public function getIdProducto() {
-            return $this -> idProducto;
+        public function getUsuario() {
+            return $this -> usuario;
         }
 
-        public function setIdProducto($idProducto) {
-            $this -> idProducto = $idProducto;
-        }
-
-        public function getIdUsuario() {
-            return $this -> idUsuario;
-        }
-
-        public function setIdUsuario($idUsuario) {
-            $this -> idUsuario = $idUsuario;
+        public function setUsuario($usuario) {
+            $this -> usuario = $usuario;
         }
 
         public function getFecha() {

@@ -1,6 +1,5 @@
 <?php
 
-	require_once '../model/Pedido.php';
 	require_once 'CRUD.php';
 	require_once 'conexion.php';
 
@@ -30,11 +29,12 @@
 				$stmt->execute();
 
 				return $stmt->rowCount();
-				}
+				
 			} catch (PDOException $error) {
                 echo "Error al obtener los datos del pedido: " . $error -> getMessage();
                 return null;
             }
+		}
 
 		public function eliminar($idPedido) {
 			try{
@@ -52,7 +52,7 @@
             }
 		}
 
-		public function actualizar($pedido) {
+		public function actualizar($idPedido, $pedido) {
 			try{
 			
 				$query = "UPDATE Pedido SET id_proveedor = :idProveedor, id_producto = :idProducto,
