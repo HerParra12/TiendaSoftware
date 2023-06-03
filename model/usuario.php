@@ -10,14 +10,14 @@
         private $fechaNacimiento;
         private $listaPedidos;
 
-        public function __construct($idUsuario, $nombres, $apellidos, $role, $correo, $fechaNacimiento) {
+        public function __construct($idUsuario, $nombres, $apellidos, $role, $correo, $fechaNacimiento, $listaPedidos) {
             $this -> idUsuario = $idUsuario;
-            $this -> nombres = $nombres;
+            $this -> nombres = $nombres;      
             $this -> apellidos = $apellidos;
             $this -> role = $role;
             $this -> correo = $correo;
             $this -> fechaNacimiento = $fechaNacimiento;
-            $this -> listaPedidos = array();
+            $this -> listaPedidos = $listaPedidos;
         }
         
         public function __toString() {

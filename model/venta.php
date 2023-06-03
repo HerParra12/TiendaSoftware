@@ -5,19 +5,19 @@
         private $idVenta;
         private $fechaVenta;
         private $totalVenta;
-        private $listaProductos;
+        private $listaInventario;
 
-        public function __construct($fechaVenta, $totalVenta, $listaProductos) {
-            $this -> fechaVenta = $fechaVent;
+        public function __construct($idVenta, $fechaVenta, $totalVenta, $listaInventario) {
+            $this -> idVenta = $idVenta;
+            $this -> fechaVenta = $fechaVenta;
             $this -> totalVenta = $totalVenta;
-            $this -> listaProductos = $listaProductos;
+            $this -> listaInventario = $listaInventario;
         }
 
         public function __toString() {
             return "idVenta: " . $this -> idVenta . "\n" . 
                    "fecha venta: " . $this -> fechaVenta . "\n" . 
-                   "total venta: " . $this -> totalVenta . "\n" . 
-                   "lista productso: " . $this -> listaProductos;
+                   "total venta: " . $this -> totalVenta . "\n";
         }
 
         public function getIdVenta() {
@@ -44,12 +44,12 @@
             $this -> totalVenta = $totalVenta;
         }
     
-        public function getListaProductos() {
-            return $this -> listaProductos;
+        public function getListaVentas() {
+            return $this -> listaInventario;
         }
     
-        public function setListaProductos($listaProductos) {
-            $this -> listaProductos = $listaProductos;
+        public function setListaVentas($listaInventario) {
+            $this -> listaInventario = $listaInventario;
         }
     }
 ?>
