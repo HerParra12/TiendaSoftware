@@ -6,78 +6,53 @@
     class UsuarioDAO implements CRUD {
 
         private $listaUsuarios;
-        private $pedidoDao;
         private $link;
+        private $util;
 
         public function __construct() {
             $conexion = new Conexion();
-            $this -> pedidoDao = new PedidoDAO();
             $this -> link = $conexion -> getConexion();
             $this -> listaUsuarios =  array();
+            $this -> util = new DAOUtil();
         }
 
         public function agregar($nuevoUsuario) {
-            try {
-                $query = "INSERT INTO Usuario VALUES(null, :nombres, :apellidos, :correo, :rol, :fecha_nacimiento)";
-                $statement = $this -> link -> prepare($query);
-                $statement -> bindValue(':nombres', $nuevoUsuario -> getNombres());
-                $statement -> bindValue(':apellidos', $nuevoUsuario -> getApellidos());
-                $statement -> bindValue(':correo', $nuevoUsuario -> getCorreo());
-                $statement -> bindValue(':rol', $nuevoUsuario -> getRole());
-                $statement -> bindValue(':fecha_nacimiento',  $nuevoUsuario -> getFechaNacimiento());
-                $statement -> execute();
-                $this -> mostrarLista();
-            } catch (PDOException $error) {
-                echo "Error al obtener los datos del inventario: " . $error -> getMessage();
-                return null;
-            }
+            $mapa = array(
+                ":nombres" => $nuevoUsuario -> getNombres(),
+                ":apellidos" => $nuevoUsuario -> getApellidos(),
+                ":correo" => $nuevoUsuario -> getCorreo(),
+                ":rol" => $nuevoUsuario -> getRole(),
+                ":fecha_nacimiento" => $nuevoUsuario -> getFechaNacimiento()
+            );
+            $this -> util -> agregar($this -> link, "INSERT INTO Usuario VALUES(null, :nombres, :apellidos, :correo, :rol, :fecha_nacimiento)", $mapa);
+            $this -> mostrarLista();
         }
 
         public function eliminar($idUsuario) {
-            try {
-                $query = "DELETE FROM Usuario WHERE id_usuario = :id";
-                $statement = $this -> link -> prepare($query);
-                $statement -> bindValue(':id', $idUsuario);
-                $statement -> execute();
-                $this -> mostrarLista();
-            }catch (PDOException $error) {
-                echo "Error al obtener los datos del inventario: " . $error -> getMessage();
-                return null;
-            }
+            $this -> util -> eliminar($this -> link, "DELETE FROM Usuario WHERE id_usuario = :id", $idUsuario);
+            $this -> mostrarLista();
         }
 
         public function actualizar($idUsuario, $nuevoUsuario) {
-            try {
-                $query = "UPDATE Usuario SET nombres = :nombres, apellidos = :apellidos, correo = :correo, rol = :rol, fecha_nacimiento = :fecha_nacimiento WHERE id_usuario = :id";
-                echo $query;
-                $statement = $this -> link -> prepare($query);
-                $statement -> bindValue(':id', $idUsuario);
-                $statement -> bindValue(':nombres', $nuevoUsuario -> getNombres());
-                $statement -> bindValue(':apellidos', $nuevoUsuario -> getApellidos());
-                $statement -> bindValue(':correo', $nuevoUsuario -> getCorreo());
-                $statement -> bindValue(':rol', $nuevoUsuario -> getRole());
-                $statement -> bindValue(':fecha_nacimiento',  $nuevoUsuario -> getFechaNacimiento());
-                $statement -> execute();
-                $this -> mostrarLista();
-            } catch (PDOException $error) {
-                echo "Error al obtener los datos del inventario: " . $error -> getMessage();
-                return null;
-            }
+            $mapa = array(
+                ":id" => $idUsuario,
+                ":nombres" => $nuevoUsuario -> getNombres(),
+                ":apellidos" => $nuevoUsuario -> getApellidos(),
+                ":correo" => $nuevoUsuario -> getCorreo(),
+                ":rol" => $nuevoUsuario -> getRole(),
+                ":fecha_nacimiento" => $nuevoUsuario -> getFechaNacimiento()
+            );
+            $this -> util -> agregar($this -> link, "UPDATE Usuario SET nombres = :nombres, apellidos = :apellidos, correo = :correo, rol = :rol, fecha_nacimiento = :fecha_nacimiento WHERE id_usuario = :id", $mapa);
+            $this -> mostrarLista();
         }
         
         public function mostrarLista() {
-            try {
-                $query = "SELECT * FROM Usuario";
-                $statement = $this -> link -> query($query);
-                $results = $statement -> fetchAll(PDO::FETCH_ASSOC);
-                foreach($results as $value) {
-                    $this -> listaUsuarios[] = new Usuario($value['id_usuario'], $value['nombres'], $value['apellidos'], $value['rol'], $value['correo'], $value['fecha_nacimiento']);
-                }
-                return $this -> listaUsuarios;
-            } catch(PDOException $error) {
-                echo "Error al obtener los datos del inventario: " . $error -> getMessage();
-                return array();
+            $lista = $this -> util -> mostrarLista($this -> link, "SELECT * FROM Usuario", array());
+            foreach($lista as $value) {
+                $idUsuario = $value['id_usuario'];
+                $this -> listaUsuarios[] = new Usuario($idUsuario, $value['nombres'], $value['apellidos'], $value['rol'], $value['correo'], $value['fecha_nacimiento'], array());
             }
+            return $this -> listaUsuarios;
         }
     }
 ?>

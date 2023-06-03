@@ -6,71 +6,49 @@
     class VentaDAO implements CRUD {
 
         private $listaVenta;
+		private $link;
+        private $util;
 
         public function __construct() {
             $conexion = new Conexion();
             $this -> link = $conexion -> getConexion();
             $this -> listaVenta = array();
+			$this -> util = new DAOUtil();
         }
 
         public function agregar($nuevaVenta) {
-            try {
-                $query = "INSERT INTO Usuario VALUES(null, :nombres, :apellidos, :correo, :rol, :fecha_nacimiento)";
-                $statement = $this -> link -> prepare($query);
-                $statement -> bindValue(':nombres', $nuevaCompra -> getNombres());
-                $statement -> bindValue(':apellidos', $nuevaCompra -> getApellidos());
-                $statement -> bindValue(':correo', $nuevaCompra -> getCorreo());
-                $statement -> bindValue(':rol', $nuevaCompra -> getRole());
-                $statement -> bindValue(':fecha_nacimiento',  $nuevaCompra -> getFechaNacimiento());
-                $statement -> execute();
-                $this -> mostrarLista();
-            } catch (PDOException $error) {
-                return null;
-            }
+            $mapa = array(
+				":fecha_venta" => $nuevaVenta -> getFechaVenta(),
+				":total_venta" => $nuevaVenta -> getTotalVenta()
+			);
+			$this -> util -> agregar($this -> link, "INSERT INTO Venta VALUES(null, :fecha_venta, :total_venta)", $mapa);
         }
 
         public function eliminar($idVenta) {
-			try {
-				$query = "DELETE FROM Venta WHERE id_venta = :idVenta";
-				$statement = $this->link->prepare($query);
-				$statement->bindValue(':idVenta', $idVenta);
-				$statement->execute();
-				return $statement->rowCount();
-			} catch (PDOException $error) {
-				echo "Error al eliminar la venta: " . $error->getMessage();
-				return 0;
-			}
+			$this -> util -> eliminar($this -> link, "DELETE FROM Venta WHERE id_venta = :id", $idVenta);
+			$this -> mostrarLista();
 		}
 
 
-        public function actualizar($venta) {
-			try {
-				$query = "UPDATE Venta SET fecha_venta = :fechaVenta, total_venta = :totalVenta WHERE id_venta = :idVenta";
-				$statement = $this->link->prepare($query);
-				$statement->bindValue(':fechaVenta', $venta->getFechaVenta());
-				$statement->bindValue(':totalVenta', $venta->getTotalVenta());
-				$statement->bindValue(':idVenta', $venta->getIdVenta());
-				$statement->execute();
-				return $statement->rowCount();
-			} catch (PDOException $error) {
-				echo "Error al actualizar la venta: " . $error->getMessage();
-				return 0;
-			}
+        public function actualizar($idVenta, $venta) {
+			$mapa = array(
+				":id" => $idVenta,
+				":fecha_venta" => $venta -> getFechaVenta(),
+				":total_venta" => $venta -> getTotalVenta()
+			);
+			$this -> util -> actualizar($this -> link, "UPDATE Venta SET fecha_venta = :fecha_venta, total_venta = :total_venta WHERE id_venta = :id", $mapa);
+			$this -> mostrarLista();
 		}
         
         public function mostrarLista() {
-			try {
-				$query = "SELECT * FROM Venta";
-				$statement = $this->link->query($query);
-				$results = $statement->fetchAll(PDO::FETCH_ASSOC);
-				foreach ($results as $value) {
-					$this->listaVentas[] = new Venta($value['fecha_venta'], $value['total_venta'], $value['lista_productos']);
-				}
-				return $listaVentas;
-			} catch (PDOException $error) {
-				echo "Error al obtener los datos de las ventas: " . $error->getMessage();
-				return [];
+			$lista = $this -> util -> mostrarLista($this -> link, "SELECT * FROM Venta", array());
+			$query = "SELECT ve.fecha_venta, ve.total_venta FROM venta ve, ventainventario vi, inventario inv WHERE ve.id_venta = vi.id_venta AND vi.id_inventario = inv.id_inventario AND ve.id_venta = :id";
+			foreach ($lista as $value) {
+				$idVenta = $value['id_venta'];
+				$listaInventario = $this -> util -> mostrarLista($this -> link, $query, array(":id" => $idVenta));
+				$this -> listaVenta[] = new Venta($idVenta, $value['fecha_venta'], $value['total_venta'], $listaInventario);
 			}
+			return $this -> listaVenta;
 		}
     }
 ?>

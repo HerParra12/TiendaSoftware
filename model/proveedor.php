@@ -9,13 +9,13 @@
         private $correo;
         private $listaTelefono;
 
-        public function __construct($idProveedor, $nit, $nombre, $direccion, $correo) {
+        public function __construct($idProveedor, $nit, $nombre, $direccion, $correo, $listaTelefono) {
             $this -> idProveedor = $idProveedor;
             $this -> nit = $nit;
             $this -> nombre = $nombre;
             $this -> direccion = $direccion;
             $this -> correo = $correo;
-            $this -> listaTelefono = array();
+            $this -> listaTelefono = $listaTelefono;
         }
 
         public function __toString() {

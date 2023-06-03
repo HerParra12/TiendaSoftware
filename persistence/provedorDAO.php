@@ -2,7 +2,6 @@
 
     require_once 'crud.php';
     require_once 'conexion.php';
-    include 'DAOUtil.php';
 
     class ProveedorDAO implements CRUD {
 
@@ -28,6 +27,7 @@
         }
 
         public function eliminar($idProveedor) {
+            $this -> util -> eliminar($this -> link, "DELETE FROM Telefono WHERE id_usuario = :id", $idProveedor);
             $this -> util -> eliminar($this -> link, "DELETE FROM Proveedor WHERE id_proveedor = :id", $idProveedor);
             $this -> mostrarLista();
         }
@@ -48,9 +48,8 @@
             $lista = $this -> util -> mostrarLista($this -> link, "SELECT * FROM Proveedor", array());
             foreach($lista as $value) {
                 $idProveedor = $value['id_proveedor'];
-                $user = new Proveedor($idProveedor, $value['nit'], $value['nombre'], $value['direccion'], $value['correo']);
-                $mapa = array(":id" => $idProveedor);
-                $user -> setListaTelefono($this -> util -> mostrarLista($this -> link, "SELECT * FROM Telefono WHERE id_usuario = :id", $mapa));
+                $telefonos = $this -> util -> mostrarLista($this -> link, "SELECT * FROM Telefono WHERE id_usuario = :id", array(":id" => $idProveedor));
+                $user = new Proveedor($idProveedor, $value['nit'], $value['nombre'], $value['direccion'], $value['correo'], $telefonos);
                 $this -> listaProveedores[] = $user;
             }            
             return $this -> listaProveedores;

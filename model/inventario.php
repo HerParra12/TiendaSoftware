@@ -6,13 +6,14 @@
         private $nombre;
         private $precio;
         private $cantidad;
+        private $listaVentas;
 
-
-        public function __construct($idInventario, $nombre, $precio, $cantidad) {
+        public function __construct($idInventario, $nombre, $precio, $cantidad, $listaVentas) {
             $this -> idInventario = $idInventario;
             $this -> nombre = $nombre;
             $this -> precio = $precio;
             $this -> cantidad = $cantidad;
+            $this -> listaVentas = $listaVentas;
         }
         
         public function __toString() {
@@ -52,6 +53,14 @@
     
         public function setCantidad($cantidad) {
             $this -> cantidad = $cantidad;
+        }
+
+        public function getListaVentas() {
+            return $this -> listaVentas;
+        }
+
+        public function setListaVentas($listaVentas) {
+            $this -> listaVentas = $listaVentas;
         }
     }
 
