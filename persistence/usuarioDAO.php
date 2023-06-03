@@ -6,10 +6,12 @@
     class UsuarioDAO implements CRUD {
 
         private $listaUsuarios;
+        private $pedidoDao;
         private $link;
 
         public function __construct() {
             $conexion = new Conexion();
+            $this -> pedidoDao = new PedidoDAO();
             $this -> link = $conexion -> getConexion();
             $this -> listaUsuarios =  array();
         }
@@ -69,7 +71,7 @@
                 $statement = $this -> link -> query($query);
                 $results = $statement -> fetchAll(PDO::FETCH_ASSOC);
                 foreach($results as $value) {
-                    $this -> listaUsuarios[] = new Usuario($value['id_usuario'], $value['nombres'], $value['apellidos'], $value['correo'], $value['rol'], $value['fecha_nacimiento']);
+                    $this -> listaUsuarios[] = new Usuario($value['id_usuario'], $value['nombres'], $value['apellidos'], $value['rol'], $value['correo'], $value['fecha_nacimiento']);
                 }
                 return $this -> listaUsuarios;
             } catch(PDOException $error) {
