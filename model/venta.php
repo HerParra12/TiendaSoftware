@@ -44,11 +44,11 @@
             $this -> totalVenta = $totalVenta;
         }
     
-        public function getListaVentas() {
+        public function getlistaInventario() {
             return $this -> listaInventario;
         }
     
-        public function setListaVentas($listaInventario) {
+        public function setlistaInventario($listaInventario) {
             $this -> listaInventario = $listaInventario;
         }
     }
