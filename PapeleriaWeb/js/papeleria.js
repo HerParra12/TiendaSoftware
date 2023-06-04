@@ -89,7 +89,6 @@ function createTodoLi(text) {
     li.classList.add("not-completed");
     li.innerHTML = `
       <p>${text}</p>
-      <i class='bx bx-dots-vertical-rounded'></i>
     `;
     return li;
   }
@@ -100,7 +99,7 @@ function createTodoLi(text) {
 
     if (dayOfWeek === 0) { // Domingo
       const todoList = document.getElementById("todo-list");
-      const newLi = createTodoLi("Descargar reportes semanales");
+      const newLi = createTodoLi("Descargar reporte general semanal");
       todoList.appendChild(newLi);
     }
   }
@@ -112,7 +111,7 @@ function createTodoLi(text) {
 
     if (currentDay === lastDayOfMonth) {
       const todoList = document.getElementById("todo-list");
-      const newLi = createTodoLi("Descargar reportes mensuales");
+      const newLi = createTodoLi("Descargar reporte general mensual");
       todoList.appendChild(newLi);
     }
   }
