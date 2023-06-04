@@ -89,7 +89,6 @@ function createTodoLi(text) {
     li.classList.add("not-completed");
     li.innerHTML = `
       <p>${text}</p>
-      <i class='bx bx-dots-vertical-rounded'></i>
     `;
     return li;
   }
@@ -100,7 +99,7 @@ function createTodoLi(text) {
 
     if (dayOfWeek === 0) { // Domingo
       const todoList = document.getElementById("todo-list");
-      const newLi = createTodoLi("Cosas por hacer (Domingo)");
+      const newLi = createTodoLi("Descargar reporte general semanal");
       todoList.appendChild(newLi);
     }
   }
@@ -112,7 +111,7 @@ function createTodoLi(text) {
 
     if (currentDay === lastDayOfMonth) {
       const todoList = document.getElementById("todo-list");
-      const newLi = createTodoLi("Cosas por hacer (Último día del mes)");
+      const newLi = createTodoLi("Descargar reporte general mensual");
       todoList.appendChild(newLi);
     }
   }
@@ -144,6 +143,7 @@ const inventarioLink = document.getElementById('inventario'),
 		comprasLink = document.getElementById('compras'),
 		pedidosLink = document.getElementById('pedidos'),
 		proveedoresLink = document.getElementById('proveedores'),
+		telefonosLink = document.getElementById('telefonos'),
         empleadosLink = document.getElementById('empleados'),
 		dashboardContainer = document.querySelector('.dashboard-container'),
 		inventarioContainer = document.querySelector('.inventario-container'),
@@ -151,6 +151,7 @@ const inventarioLink = document.getElementById('inventario'),
 		comprasContainer = document.querySelector('.compras-container'),
 		pedidosContainer = document.querySelector('.pedidos-container'),
 		proveedoresContainer = document.querySelector('.proveedores-container'),
+		telefonosContainer = document.querySelector('.telefonos-container'),
         empleadosContainer = document.querySelector('.empleados-container');
 
 inicioLink.addEventListener('click', function(event) {
@@ -161,6 +162,7 @@ inicioLink.addEventListener('click', function(event) {
 	comprasContainer.style.display = 'none';
 	pedidosContainer.style.display = 'none';
 	proveedoresContainer.style.display = 'none';
+	telefonosContainer.style.display = 'none'
     empleadosContainer.style.display = 'none';
 });
 
@@ -172,6 +174,7 @@ inventarioLink.addEventListener('click', function(event) {
 	comprasContainer.style.display = 'none';
 	pedidosContainer.style.display = 'none';
 	proveedoresContainer.style.display = 'none';
+	telefonosContainer.style.display = 'none'
     empleadosContainer.style.display = 'none';
 });
 
@@ -183,6 +186,7 @@ ventasLink.addEventListener('click', function(event) {
 	comprasContainer.style.display = 'none';
 	pedidosContainer.style.display = 'none';
 	proveedoresContainer.style.display = 'none';
+	telefonosContainer.style.display = 'none'
     empleadosContainer.style.display = 'none';
 });
 
@@ -194,6 +198,7 @@ comprasLink.addEventListener('click', function(event) {
 	comprasContainer.style.display = 'block';
 	pedidosContainer.style.display = 'none';
 	proveedoresContainer.style.display = 'none';
+	telefonosContainer.style.display = 'none'
     empleadosContainer.style.display = 'none';
 });
 
@@ -205,6 +210,7 @@ pedidosLink.addEventListener('click', function(event) {
 	comprasContainer.style.display = 'none';
 	pedidosContainer.style.display = 'block';
 	proveedoresContainer.style.display = 'none';
+	telefonosContainer.style.display = 'none'
     empleadosContainer.style.display = 'none';
 });
 
@@ -216,6 +222,19 @@ proveedoresLink.addEventListener('click', function(event) {
 	comprasContainer.style.display = 'none';
 	pedidosContainer.style.display = 'none';
 	proveedoresContainer.style.display = 'block';
+	telefonosContainer.style.display = 'none'
+    empleadosContainer.style.display = 'none';
+});
+
+telefonosLink.addEventListener('click', function(event) {
+	event.preventDefault(); // Evita el comportamiento predeterminado del enlace
+	dashboardContainer.style.display = 'none';
+	inventarioContainer.style.display = 'none';
+	ventasContainer.style.display = 'none';
+	comprasContainer.style.display = 'none';
+	pedidosContainer.style.display = 'none';
+	proveedoresContainer.style.display = 'none';
+	telefonosContainer.style.display = 'block'
     empleadosContainer.style.display = 'none';
 });
 
@@ -227,17 +246,6 @@ empleadosLink.addEventListener('click', function(event) {
 	comprasContainer.style.display = 'none';
 	pedidosContainer.style.display = 'none';
 	proveedoresContainer.style.display = 'none';
+	telefonosContainer.style.display = 'none'
     empleadosContainer.style.display = 'block';
 });
-
-//ocultar contraseña de usuarios
-function toggleCampo() {
-    const campo = document.getElementById("campo");
-    const boton = document.getElementById("boton");
-
-    if (campo.style.display === "hiden") {
-      campo.style.display = "table-cell";
-    } else {
-      campo.style.display = "hidden";
-    }
-  }
