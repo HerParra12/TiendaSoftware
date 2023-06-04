@@ -46,3 +46,6 @@ const $btnFormSignUp = document.getElementById('btn-form-sign-up'),
             $signInContainer.reset();
         }
      });
+
+const fechaNacimientoInput = document.getElementById("fechaNacimiento");
+const fechaNacimiento = new Date(fechaNacimientoInput.value);

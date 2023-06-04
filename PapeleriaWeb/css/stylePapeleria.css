@@ -75,6 +75,10 @@ body {
 	display: none;
 }
 
+.telefonos-container{
+	display: none;
+}
+
 .empleados-container{
 	display: none;
 }
