@@ -74,3 +74,4 @@ document.getElementById("formularioModificacionInventario").addEventListener("su
 document.getElementById("formularioEliminacionInventario").addEventListener("submit", function() {
 	this.reset();
 });
+

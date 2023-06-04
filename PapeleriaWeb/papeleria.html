@@ -122,55 +122,6 @@
                 </ul>
 
                 <div class="table-data">
-                    <div class="order">
-                        <div class="head">
-                            <h3>Movimientos de la papelería</h3>
-                            <i class='bx bx-search'></i>
-                            <i class='bx bx-filter'></i>
-                        </div>
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Usuario</th>
-                                    <th>Fecha</th>
-                                    <th>Acción</th>
-                                    <th>Módulo</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>01-05-2023</td>
-                                    <td><span class="status completed">Registrar</span></td>
-                                    <td>Ventas</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>01-05-2023</td>
-                                    <td><span class="status pending">Eliminar</span></td>
-                                    <td>Pedidos</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>01-05-2023</td>
-                                    <td><span class="status process">Modificar</span></td>
-                                    <td>Inventario</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>01-05-2023</td>
-                                    <td><span class="status pending">Eliminar</span></td>
-                                    <td>Proveedores</td>
-                                </tr>
-                                <tr>
-                                    <td>John Doe</td>
-                                    <td>01-05-2023</td>
-                                    <td><span class="status completed">Registrar</span></td>
-                                    <td>Ventas</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
                     <div class="todo">
                         <div class="head">
                             <h3>Actividades por hacer</h3>
@@ -193,7 +144,7 @@
                     <div class="left">
                         <h1>Inventario</h1>
                     </div>
-                    <a href="#" class="btn-download">
+                    <a href="#" class="btn-download" id="download-inventario-btn">
                         <i class='bx bxs-cloud-download'></i>
                         <span class="text">Descargar reporte</span>
                     </a>
@@ -214,9 +165,8 @@
                         <div class="head">
                             <h3>Listado de productos</h3>
                             <i class='bx bxs-add-to-queue' onclick="mostrarFormularioInventario()"></i>
-                            <i class='bx bx-filter' onclick="filtrarContenido()"></i>
                         </div>
-                        <table>
+                        <table id="tabla-inventario">
                             <thead>
                                 <tr>
                                     <th>Acción</th>
@@ -320,7 +270,7 @@
                     <div class="left">
                         <h1>Ventas</h1>
                     </div>
-                    <a href="#" class="btn-download">
+                    <a href="#" class="btn-download" id="download-ventas-btn">
                         <i class='bx bxs-cloud-download'></i>
                         <span class="text">Descargar reporte</span>
                     </a>
@@ -350,7 +300,7 @@
                             <i class='bx bxs-add-to-queue' onclick="mostrarFormularioVentas()"></i>
                             <i class='bx bx-filter'></i>
                         </div>
-                        <table>
+                        <table id="tabla-ventas">
                             <thead>
                                 <tr>
                                     <th>Nombre del producto</th>
@@ -440,7 +390,7 @@
                     <div class="left">
                         <h1>Compras</h1>
                     </div>
-                    <a href="#" class="btn-download">
+                    <a href="#" class="btn-download" id="download-compras-btn">
                         <i class='bx bxs-cloud-download'></i>
                         <span class="text">Descargar reporte</span>
                     </a>
@@ -469,7 +419,7 @@
                             <h3>Historial de compras</h3>
                             <i class='bx bx-filter'></i>
                         </div>
-                        <table>
+                        <table id="tabla-compras">
                             <thead>
                                 <tr>
                                     <th>Acción</th>
@@ -504,7 +454,7 @@
                                         <option value="">-- Selecciona una opción --</option>
                                         <option value="pago">Pago</option>
                                     </select>
-                                    <input type="submit" value="Modificar producto" id="modificarCompra">
+                                    <input type="submit" value="Modificar compra" id="modificarCompra">
                                 </form>
                             </div>
                         </div>
@@ -517,10 +467,6 @@
                     <div class="left">
                         <h1>Pedidos</h1>
                     </div>
-                    <a href="#" class="btn-download">
-                        <i class='bx bxs-cloud-download'></i>
-                        <span class="text">Descargar reporte</span>
-                    </a>
                 </div>
 
                 <ul class="box-info">
@@ -547,7 +493,7 @@
                             <i class='bx bxs-add-to-queue' onclick="mostrarFormularioPedidos()"></i>
                             <i class='bx bx-filter'></i>
                         </div>
-                        <table>
+                        <table id="tabla-pedidos">
                             <thead>
                                 <tr>
                                     <th>Acción</th>
@@ -660,10 +606,6 @@
                     <div class="left">
                         <h1>Proveedores</h1>
                     </div>
-                    <a href="#" class="btn-download">
-                        <i class='bx bxs-cloud-download'></i>
-                        <span class="text">Descargar reporte</span>
-                    </a>
                 </div>
 
                 <ul class="box-info">
@@ -683,7 +625,7 @@
                             <i class='bx bxs-add-to-queue' onclick="mostrarFormularioProveedores()"></i>
                             <i class='bx bx-filter'></i>
                         </div>
-                        <table>
+                        <table id="tabla-proveedores">
                             <thead>
                                 <tr>
                                     <th>Acción</th>
@@ -693,7 +635,6 @@
                                     <th>Teléfono</th>
                                     <th>Correo</th>
                                     <th>Nombre del producto que provee</th>
-                                    <th>Estado</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -710,7 +651,6 @@
                                     <td>3216547898</td>
                                     <td>clondono@tienda.com</td>
                                     <td>Caja de lápices</td>
-                                    <td><span class="status completed">Activo</span></td>
                                 </tr>
                                 
                             </tbody>
@@ -777,10 +717,6 @@
                     <div class="left">
                         <h1>Telefonos</h1>
                     </div>
-                    <a href="#" class="btn-download">
-                        <i class='bx bxs-cloud-download'></i>
-                        <span class="text">Descargar reporte</span>
-                    </a>
                 </div>
 
                 <div class="table-data">
@@ -861,10 +797,6 @@
                     <div class="left">
                         <h1>Empleados</h1>
                     </div>
-                    <a href="#" class="btn-download">
-                        <i class='bx bxs-cloud-download'></i>
-                        <span class="text">Descargar reporte</span>
-                    </a>
                 </div>
 
                 <ul class="box-info">
@@ -881,7 +813,6 @@
                     <div class="order">
                         <div class="head">
                             <h3>Listado de empleados</h3>
-                            <i class='bx bx-filter'></i>
                         </div>
                         <table>
                             <thead>
@@ -959,5 +890,4 @@
     <script src="js/proveedores.js"></script>
     <script src="js/telefonos.js"></script>
 </body>
-
 </html>
