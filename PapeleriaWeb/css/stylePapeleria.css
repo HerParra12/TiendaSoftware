@@ -234,7 +234,7 @@ body {
 	margin-right: auto;
 }
 #content nav form .form-input {
-	display: flex;
+	display: none;
 	align-items: center;
 	height: 36px;
 }
@@ -509,14 +509,167 @@ body {
 /* MAIN */
 /* CONTENT */
 
+/*FORMULARIOS*/
+.formulario-background{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    backdrop-filter: blur(4px);
+    background-color:transparent;
+    z-index: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario-container{
+    position: relative;
+    margin-top: 5%;
+    margin-inline: 40%;
+    background-color: var(--light-blue);
+    width: 550px;
+    height: 680px;
+    padding: 1.5rem;
+    border-radius: 8px;
+    animation-name: modal;
+    animation-duration: .5s;
+    box-shadow: o 5px 15px -5px rgba(15, 255, 248, 0.7);
+    z-index: 10;
+    overflow-y: scroll;
+    overflow-x:hidden;
+}
+
+/* Personalizar el scroll vertical */
+::-webkit-scrollbar {
+    width: 7px; /* Ancho del scroll */
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent; /* Color de fondo del track */
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: rgba(16,54,82,0.3); /* Color del thumb (barra del scroll) */
+    border-radius: 30px;
+    transition: background-color 1.5s ease;
+}
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: rgba(9,117,174, 0.3); /* Color del thumb al pasar el cursor */
+  }
+
+.close-button{
+    position: absolute;
+    border-radius: 50%;
+    top: 7px;
+    right: 7px;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #eee;
+    cursor: pointer;
+    background-color:var(--navy-blue);
+}
+
+.close-button:hover{
+  background-color: var(--blue);
+}
+
+.close-button:hover{
+    fill: rgb(54,54,54);
+}
+
+.formulario-add {
+    width: 97%;
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background-color: rgb(16, 54, 82, 0.602);
+    border-radius: 3%;
+    text-align: center;
+}
+.create-account {
+    padding: 2.7rem 0;
+    padding-bottom: 1rem;
+    font-size: 1.7rem;
+    color: white;
+}
+
+.cuenta-gratis {
+    padding: 2rem 0;
+    color: white;
+}
+.formulario-add input {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    background-color: transparent;
+    border: none;
+    border-radius: 2rem;
+    border-bottom: white thin solid;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: .9rem;
+    color: white;
+}
+
+.formulario-add input[type="submit"] {
+    width: 60%;
+    margin: auto;
+    margin-bottom: 5%;
+    border: none;
+    padding: .7rem;
+    border-radius: 2rem;
+    background-color: var(--blue);
+    font-weight: 600;
+    margin-top: 3rem;
+    font-size: .8rem;
+    cursor: pointer;
+    color: #222;
+}
+
+.formulario-add select {
+    width: 70%;
+    display: block;
+    margin: auto;
+    margin-bottom: 2rem;
+    margin-top: .2%;
+    background-color: rgba(9, 117, 174, 1.5);
+    border: none;
+    border-radius: 2rem;
+    border: none;
+    text-align: center;
+    outline: none;
+    padding: .2rem 0;
+    font-size: 1rem;
+    color: var(--darkest-blue);
+}
+
+.formulario-add.expanded option {
+    display: block;
+}
+
+.formulario-add.expanded option:first-child {
+    display: none;
+}
 
 
+.formulario-add input[type="submit"]:hover{
+    background-color: var(--dark-blue);
+    color: var(--light-blue);
+}
 
+::placeholder {
+    color:#fff;
+}
 
-
-
-
-
+/*Media*/
 @media screen and (max-width: 768px) {
 	#sidebar {
 		width: 200px;
@@ -531,12 +684,6 @@ body {
 		display: none;
 	}
 }
-
-
-
-
-
-
 @media screen and (max-width: 576px) {
 	#content nav form .form-input input {
 		display: none;
