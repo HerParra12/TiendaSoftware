@@ -60,7 +60,6 @@
 		public function actualizar($idInventario, $nuevoInventario) {
 			$mapa = array(
 				":id" => $idInventario,
-				":upc" => $nuevoInventario->getUpc(),
 				":marca_producto" => $nuevoInventario->getMarca_producto(),
 				":nombre" => $nuevoInventario->getNombre(),
 				":precio" => $nuevoInventario->getPrecio(),

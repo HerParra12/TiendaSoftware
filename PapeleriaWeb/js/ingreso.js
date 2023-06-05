@@ -11,23 +11,6 @@ document.addEventListener('click', e => {
     }
 });
 
-//Desplegar las opciones en el formulario de registro
-function validateForm() {
-    var selectField = document.getElementById("opciones");
-    if (selectField.value === "") {
-      alert("Por favor, selecciona una opción válida");
-      return false;
-    }
-  
-    // Validación exitosa, enviar formulario de manera programática y redirigir
-    var form = document.querySelector('.formulario-sign-up'),
-        form2 = document.querySelector('.formulario');
-    form.submit();
-    form2.submit();
-    window.location.href = "papeleria.html";
-  
-    return false; // Evitar el envío del formulario de manera predeterminada
-  }
 
 //Limpiar los form
 const $btnFormSignUp = document.getElementById('btn-form-sign-up'),
@@ -49,3 +32,16 @@ const $btnFormSignUp = document.getElementById('btn-form-sign-up'),
 
 const fechaNacimientoInput = document.getElementById("fechaNacimiento");
 const fechaNacimiento = new Date(fechaNacimientoInput.value);
+// Obtener el valor del input de fecha
+$(function() {
+    $("#fechaNacimiento").datepicker({
+      dateFormat: 'yyyy-mm-dd' // Establece el formato de fecha personalizado
+    });
+  });
+
+
+
+
+
+
+
