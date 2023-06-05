@@ -47,6 +47,31 @@
 		}
 
 		/**
+		 * Método para validar el usuario usuario.
+		 *
+		 * @param Usuario $nuevoUsuario El objeto Usuario a agregar.
+		 * @return void
+		 */
+		public function validar($email, $rol) {
+			$mapa = array(
+				":correo" => $email,
+				":rol" => $rol
+			);
+		
+			$query = "SELECT correo, rol FROM nombres WHERE correo = :correo AND rol = :rol";
+			$result = $this->util->consultar($this->link, $query, $mapa);
+		
+			if ($result && $result->rowCount() > 0) {
+				// El correo y el rol coinciden en la base de datos
+				$this->mostrarLista();
+			} else {
+				// El correo y el rol no coinciden en la base de datos
+				// Puedes mostrar un mensaje de error o realizar alguna otra acción
+				echo "El correo y el rol no coinciden en la base de datos.";
+			}
+		}
+
+		/**
 		 * Método para eliminar un usuario por su ID.
 		 *
 		 * @param mixed $idUsuario El ID del usuario a eliminar.
@@ -108,6 +133,13 @@
 				$this->listaUsuarios[] = new Usuario($idUsuario, $value['nombres'], $value['apellidos'], $value['correo'], $value['rol'], $value['fecha_nacimiento'], $listaPedidos);
 			}
 			return $this->listaUsuarios;
+		}
+
+		public function contarUsuariosEmpleado() {
+			$query = "SELECT COUNT(*) AS count FROM Usuario WHERE rol = 'empleado'";
+			$statement = $this->util->consultar($this->link, $query, array());
+			$result = $statement->fetch(PDO::FETCH_ASSOC);
+			return $result['count'];
 		}
 	}
 ?>

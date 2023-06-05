@@ -2,6 +2,7 @@
     require_once '../persistence/usuarioDAO.php';
     $usuarioDao = new UsuarioDAO();
     $lista = $usuarioDao -> mostrarLista();
+    $size = count($lista);
     foreach($lista as $usuario) {
         echo "<tr>";
         echo "<td>";

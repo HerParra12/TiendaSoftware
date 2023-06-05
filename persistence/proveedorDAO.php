@@ -1,5 +1,6 @@
 <?php
 
+	require_once '../model/proveedor.php';
 	require_once 'crud.php';
 	require_once 'conexion.php';
 	require_once 'DAOUtil.php';
@@ -89,6 +90,18 @@
 				$this->listaProveedores[] = $proveedor;
 			}
 			return $this->listaProveedores;
+		}
+		/**
+		 * Método para contar la cantidad de proveedores cuyo nombre contiene la subcadena "car".
+		 *
+		 * @return int La cantidad de proveedores.
+		 */
+		public function contarProveedoresConNombreCar() {
+			$statement = $this->link->prepare("SELECT COUNT(*) as count FROM Proveedor");
+			$statement->execute();
+			$result = $statement->fetch(PDO::FETCH_ASSOC);
+
+			return $result['count'];
 		}
 	}
 

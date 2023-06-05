@@ -1,45 +1,21 @@
 <?php
-/*
-$servidor = "localhost"; // Dirección del servidor MySQL (puede variar)
-$usuario = "root"; // Usuario de la base de datos (puede variar)
-$password = ""; // Contraseña de la base de datos (puede variar)
-$nombreBD = "papeleriadb"; // Nombre de la base de datos que creaste
+require_once '../persistence/usuarioDAO.php';
 
-// Establecer conexión
-$conexion = mysqli_connect($servidor, $usuario, $password, $nombreBD);
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // Obtiene los datos del formulario
+  $nombres = $_POST["nombre"];
+  $apellidos = $_POST["apellidos"];
+  $correo = $_POST["email"];
+  $rol = $_POST["rol"];
+  $fechaNacimiento = $_POST["fechaNacimiento"];
 
-// Verificar si hay errores de conexión
-if (!$conexion) {
-  die("Error de conexión: " . mysqli_connect_error());
-}
+  // Crea un nuevo objeto Usuario
+  $nuevoUsuario = new Usuario(0,$nombres,$apellidos,$rol,$correo,$fechaNacimiento,array());
 
-$conexion = mysqli_connect($servidor, $usuario, $password, $nombreBD);
-
-// Verificar si hay errores de conexión
-if (!$conexion) {
-  die("Error de conexión: " . mysqli_connect_error());
-}
-
-// Recibir los datos del formulario HTML (para el formulario de registro)
-$nombre = $_POST['nombre'];
-$apellidos = $_POST['apellidos'];
-$email = $_POST['email'];
-$fechaNacimiento = $_POST['fechaNacimiento'];
-$rol = $_POST['rol'];
-
-// Realizar la inserción de datos en la tabla correspondiente (por ejemplo, "tabla_registro")
-$sql = "INSERT INTO usuario (nombres, apellidos, correo, rol, fecha_nacimiento) VALUES ('$nombre', '$apellidos', '$email', '$rol', '$fechaNacimiento')";
-$resultado = mysqli_query($conexion, $sql);
-
-// Verificar si la inserción fue exitosa
-if ($resultado) {
+  // Crea una instancia de UsuarioDAO
+  $usuarioDAO = new UsuarioDAO();
+  $usuarioDAO -> agregar($nuevoUsuario);
   header("Location: papeleria.php");
   exit();
-} else {
-  echo "Error al registrar los datos";
 }
-
-// Cerrar la conexión a la base de datos
-mysqli_close($conexion);
-*/
 ?>

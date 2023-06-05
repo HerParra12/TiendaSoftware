@@ -74,6 +74,21 @@
 			}
 		}
 
+		public function consultar($link, $query, $mapa) {
+			try {
+				$statement = $link->prepare($query);
+				foreach ($mapa as $key => $value) {
+					$statement->bindValue($key, $value);
+				}
+				$statement->execute();
+				return $statement;
+			} catch (PDOException $error) {
+				echo "Error en DAOUtil consultar: " . $error->getMessage();
+				return null;
+			}
+		}
+		
+
 		/**
 		 * Método para mostrar una lista de registros utilizando una consulta preparada y un mapa de valores.
 		 *
