@@ -1,4 +1,5 @@
 <?php
+/*
     // Conexión a la base de datos
     $servidor = "localhost";
     $usuario = "root";
@@ -18,4 +19,5 @@
     
     // Cerrar la conexión a la base de datos
     mysqli_close($conexion);
+    */
 ?>

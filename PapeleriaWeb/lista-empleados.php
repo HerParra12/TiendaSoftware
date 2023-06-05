@@ -38,13 +38,22 @@ if (mysqli_num_rows($resultado) > 0) {
 
 // Cierra la conexión a la base de datos
 mysqli_close($conexion);*/
+    require_once '../persistence/usuarioDAO.php';
+    $usuarioDao = new UsuarioDAO();
+    $lista = $usuarioDao -> mostrarLista();
+    $size = count($lista);
+    foreach($lista as $usuario) {
+        echo "<tr>";
+        echo "<td>";
+        echo "<button id='modify-fila' style='border: none; background-color: transparent;' onclick='modificarFormularioEmpleados()'><i class='bx bxs-edit-alt'></i></button>";
+        echo "<button id='modify-fila' style='border: none; background-color: transparent;' onclick='eliminarFormularioEmpleados()'><i class='bx bxs-trash'></i></button>";
+        echo "</td>";
+        echo "<td>" . $usuario -> getNombres() . "</td>";
+        echo "<td>" . $usuario -> getApellidos() . "</td>";
+        echo "<td>" . $usuario -> getCorreo() . "</td>";
+        echo "<td>" . $usuario -> getRole() . "</td>";
+        echo "<td>" . $usuario -> getFechaNacimiento() . "</td>";
+        echo "</tr>";
+    } 
 
-    require_once '../persistence/UsuarioDAO.php';
-    $nombre = $_POST['nombre'];
-    $apellidos = $_POST['apellidos'];
-    $email = $_POST['email'];
-    $fechaNacimiento = $_POST['fechaNacimiento'];
-    $rol = $_POST['rol'];
-    $usuarioDAO = new UsuarioDAO();
-    $usuarios = $usuarioDAO->mostrarLista();
 ?>

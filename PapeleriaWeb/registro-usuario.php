@@ -1,4 +1,5 @@
 <?php
+/*
 $servidor = "localhost"; // Dirección del servidor MySQL (puede variar)
 $usuario = "root"; // Usuario de la base de datos (puede variar)
 $password = ""; // Contraseña de la base de datos (puede variar)
@@ -40,5 +41,5 @@ if ($resultado) {
 
 // Cerrar la conexión a la base de datos
 mysqli_close($conexion);
-
+*/
 ?>
