@@ -16,5 +16,5 @@
     $inventarioDao = new InventarioDAO();
     $pedidioDao = new PedidoDAO();
     $ventaDao = new VentaDAO();
-    
+
 ?> 
