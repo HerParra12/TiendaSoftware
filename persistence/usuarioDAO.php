@@ -1,7 +1,9 @@
 <?php
 
 	require_once 'crud.php';
-    require_once 'conexion.php';
+	require_once 'conexion.php';
+	require_once 'DAOUtil.php';
+
 	/**
 	 * Clase UsuarioDAO
 	 * 
@@ -80,7 +82,7 @@
 		 * @param mixed $idPedido El ID del pedido.
 		 * @return array Un array de objetos Usuario que representa la lista de usuarios asociados a un pedido.
 		 */
-		public function mostrarLista($idPedido) {
+		public function getPedido($idPedido) {
 			$query = "SELECT u.* FROM Usuario u, Pedido p WHERE u.id_usuario = p.id_usuario AND p.id_pedido = :idPedido";
 			$usuarios = $this->util->mostrarLista($this->link, $query, array(":idPedido" => $idPedido));
 			$this->listaUsuarios = array();
@@ -101,10 +103,9 @@
 			foreach($lista as $value) {
 				$idUsuario = $value['id_usuario'];
 				$listaPedidos = $this->util->mostrarLista($this->link, $query, array(":id" => $idUsuario));
-				$this->listaUsuarios[] = new Usuario($idUsuario, $value['nombres'], $value['apellidos'], $value['correo'], $value['rol'], $value['fecha_nacimiento']);
+				$this->listaUsuarios[] = new Usuario($idUsuario, $value['nombres'], $value['apellidos'], $value['correo'], $value['rol'], $value['fecha_nacimiento'], $listaPedidos);
 			}
 			return $this->listaUsuarios;
 		}
-
 	}
 ?>
