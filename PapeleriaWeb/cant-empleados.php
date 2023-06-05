@@ -1,9 +1,9 @@
 <?php
-/*
-$servidor = "localhost"; // Dirección del servidor MySQL (puede variar)
-$usuario = "root"; // Usuario de la base de datos (puede variar)
-$password = ""; // Contraseña de la base de datos (puede variar)
-$nombreBD = "papeleriadb"; // Nombre de la base de datos que creaste
+require_once '../persistence/usuarioDAO.php';
+$usuarioDAO = new UsuarioDAO();
+$contador = $usuarioDAO->contarUsuariosEmpleado();
+echo "" . $contador;
+
 
 // Establecer conexión
 $conexion = mysqli_connect($servidor, $usuario, $password, $nombreBD);

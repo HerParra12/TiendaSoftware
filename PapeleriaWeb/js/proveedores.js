@@ -35,7 +35,6 @@ const formularioBackgroundProveedores = document.getElementById("formularioProve
   // Event listener para cerrar el formulario del proveedores al hacer clic en el botón de cierre
   closeButtonProveedores.addEventListener("click", function () {
     cerrarFormularioProveedores();
-	document.getElementById("formularioRegistroProveedor").reset();
   });
   closeButtonModificarProveedores.addEventListener("click", function () {
     cerrarModificarProveedores();
@@ -62,15 +61,3 @@ const formularioBackgroundProveedores = document.getElementById("formularioProve
       cerrarFormularioProveedores();
     }
   });
-
-  document.getElementById("formularioRegistroProveedor").addEventListener("submit", function() {
-	this.reset();
-});
-
-document.getElementById("formularioModificarProveedor").addEventListener("submit", function() {
-	this.reset();
-});
-
-document.getElementById("formularioEliminarProveedor").addEventListener("submit", function() {
-	this.reset();
-});
