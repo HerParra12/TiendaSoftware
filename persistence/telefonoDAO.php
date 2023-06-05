@@ -104,4 +104,5 @@ class TelefonoDAO implements CRUD
         return $telefonos;
     }
 }
+
 ?>
