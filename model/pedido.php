@@ -12,6 +12,7 @@
 		private $fecha;
 		private $totalPedido;
 		private $medioPago;
+		private $listaInventario;
 
 		/**
 		 * Constructor de la clase.
@@ -24,13 +25,14 @@
 		 * @param float $totalPedido El total del pedido.
 		 * @param string $medioPago El medio de pago utilizado para el pedido.
 		 */
-		public function __construct($idPedido, $proveedor, $usuario, $fecha, $totalPedido, $medioPago) {
+		public function __construct($idPedido, $proveedor, $usuario, $fecha, $totalPedido, $medioPago , $listaInventario) {
 			$this->idPedido = $idPedido;
 			$this->proveedor = $proveedor;
 			$this->usuario = $usuario;
 			$this->fecha = $fecha;
 			$this->totalPedido = $totalPedido;
 			$this->medioPago = $medioPago;
+			$this->listaInventario = $listaInventario;
 		}
 
 		/**
