@@ -1,4 +1,9 @@
 <?php
+
+	require_once 'crud.php';
+	require_once 'conexion.php';
+	require_once 'DAOUtil.php';
+
 	/**
 	 * Clase ProveedorDAO
 	 * 
@@ -75,10 +80,11 @@
 		 * @return array Un array de objetos Proveedor que representa la lista de proveedores.
 		 */
 		public function mostrarLista() {
+			$this -> listaProveedores = array();
 			$lista = $this->util->mostrarLista($this->link, "SELECT * FROM Proveedor", array());
 			foreach ($lista as $value) {
 				$idProveedor = $value['id_proveedor'];
-				$telefonos = $this->util->mostrarLista($this->link, "SELECT * FROM Telefono WHERE id_usuario = :id", array(":id" => $idProveedor));
+				$telefonos = $this->util->mostrarLista($this->link, "SELECT * FROM Telefono WHERE id_proveedor = :id", array(":id" => $idProveedor));
 				$proveedor = new Proveedor($idProveedor, $value['nit'], $value['nombre'], $value['direccion'], $value['correo'], $telefonos);
 				$this->listaProveedores[] = $proveedor;
 			}

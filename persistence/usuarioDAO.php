@@ -98,6 +98,7 @@
 		 * @return array Un array de objetos Usuario que representa la lista de todos los usuarios.
 		 */
 		public function mostrarLista() {
+			$this->listaUsuarios = array();
 			$lista = $this->util->mostrarLista($this->link, "SELECT * FROM Usuario", array());
 			$query = "SELECT * FROM Usuario u, Pedido p WHERE u.id_usuario = p.id_usuario AND u.id_usuario = :id";
 			foreach($lista as $value) {
