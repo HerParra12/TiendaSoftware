@@ -32,4 +32,19 @@ if ($resultado) {
 // Cerrar la conexión a la base de datos
 mysqli_close($conexion);
 */
+
+	require_once '../persistence/usuarioDAO.php';
+	$usuarioDao = new UsuarioDAO();
+	$lista = $usuarioDao->mostrarLista();
+	$contador = 0;
+
+	foreach ($lista as $usuario) {
+		if ($usuario->getCorreo() == "empleado") {
+			$contador++;
+		}
+	}
+
+	echo $contador;
+	
+
 ?>

@@ -90,6 +90,18 @@
 			}
 			return $this->listaProveedores;
 		}
+		/**
+		 * Método para contar la cantidad de proveedores cuyo nombre contiene la subcadena "car".
+		 *
+		 * @return int La cantidad de proveedores.
+		 */
+		public function contarProveedoresConNombreCar() {
+			$statement = $this->link->prepare("SELECT COUNT(*) as count FROM Proveedor");
+			$statement->execute();
+			$result = $statement->fetch(PDO::FETCH_ASSOC);
+
+			return $result['count'];
+		}
 	}
 
 ?>

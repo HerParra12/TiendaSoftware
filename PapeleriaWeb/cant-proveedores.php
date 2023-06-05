@@ -32,4 +32,13 @@ if ($resultado) {
 // Cerrar la conexión a la base de datos
 mysqli_close($conexion);
 */
+
+
+	require_once '../persistence/proveedorDAO.php';
+
+	$proveedorDao = new ProveedorDAO();
+	$cantidadProveedores = $proveedorDao->contarProveedoresConNombreCar();
+
+	echo $cantidadProveedores;
+
 ?>

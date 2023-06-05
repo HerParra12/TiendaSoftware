@@ -14,4 +14,13 @@ $correo = $_POST['correo'];
 $proveedorDAO = new ProveedorDAO();
 $proveedorDAO->agregar(new Proveedor(0, $nit, $nombre, $direccion, $correo, []));
 */
+
+
+require_once '../persistence/proveedorDAO.php';
+    $proveedorDao = new ProveedorDAO();
+
+    $nit = $_POST['nit'];
+    $nombre = $_POST['nombre'];
+    $direccion = $_POST['direccion'];
+    $correo = $_POST['correo'];
 ?>

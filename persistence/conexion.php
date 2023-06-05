@@ -32,7 +32,7 @@
 		 */
 		public function __construct() {
 
-			$this->host = "localhost:3310";
+			$this->host = "localhost:3306";
 			$this->dataName = "rosita";
 			$this->username = "root";
 			$this->password = "";

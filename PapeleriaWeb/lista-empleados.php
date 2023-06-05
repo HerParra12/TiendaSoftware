@@ -50,8 +50,8 @@ mysqli_close($conexion);*/
         echo "</td>";
         echo "<td>" . $usuario -> getNombres() . "</td>";
         echo "<td>" . $usuario -> getApellidos() . "</td>";
+		echo "<td>" . $usuario -> getRole() . "</td>";
         echo "<td>" . $usuario -> getCorreo() . "</td>";
-        echo "<td>" . $usuario -> getRole() . "</td>";
         echo "<td>" . $usuario -> getFechaNacimiento() . "</td>";
         echo "</tr>";
     } 
