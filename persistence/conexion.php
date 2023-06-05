@@ -31,6 +31,7 @@
 		 * Establece los valores iniciales para el host, el nombre de la base de datos, el nombre de usuario y la contraseña.
 		 */
 		public function __construct() {
+
 			$this->host = "localhost:3310";
 			$this->dataName = "rosita";
 			$this->username = "root";

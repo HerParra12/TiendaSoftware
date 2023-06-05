@@ -89,7 +89,7 @@
                     <button type="submit" class="search-btn"><i class='bx bx-search' hidden></i></button>
                 </div>
             </form>
-            <h3 class="text-h3">Hola, Rosita!</h3>
+            <h3 class="text-h3">¡Hola!</h3>
             <input type="checkbox" id="switch-mode" hidden>
             <label for="switch-mode" class="switch-mode"></label>
         </nav>
@@ -115,7 +115,7 @@
                     <li>
                         <i class='bx bxs-group'></i>
                         <span class="text">
-                            <h3>1</h3>
+                            <h3><?php include 'cant-empleados.php'; ?></h3>
                             <p>Empleados</p>
                         </span>
                     </li>
@@ -127,7 +127,7 @@
                             <h3>Actividades por hacer</h3>
                         </div>
                         <ul class="todo-list" id="todo-list">
-                            <li class="not-completed">
+                            <li class="completed">
                                 <p>Descargar reporte general semanal</p>
                             </li>
                             <li class="completed">
@@ -202,7 +202,7 @@
                                 <button class="close-button" id="close-button-inventario">
                                     <i class='bx bx-x-circle' style="color: white"></i>
                                 </button>
-                                <form class="formulario-add" id="formularioRegistroInventario">
+                                <form action="registro-inventario.php" method="POST" class="formulario-add" id="formularioRegistroInventario">
                                     <h2 class="create-account">Registra un producto</h2>
                                     <p class="cuenta-gratis">Ingresa los datos del producto</p>
                                     <input type="text" placeholder="Marca del producto" pattern="[A-Za-z\s][0-9]{1,30}"
@@ -214,10 +214,9 @@
                                     <input type="tel" placeholder="Monto (c/u)" pattern="[0-9]{1,6}" required
                                         title="Por favor, ingresa una cantidad no mayor a $999.999">
                                     <p class="cuenta-gratis">Nombre del proveedor</p>
-                                    <select id="opciones" name="opciones" required>
+                                    <select id="opciones" name="proveedoresInventario" required>
                                         <option value="">-- Selecciona una opción --</option>
-                                        <option value="nombre1">Luis Arango</option>
-                                        <option value="nombre2">Camilo Peña</option>
+                                        <?php include 'obtener-proveedores.php';?>
                                     </select>
                                     <input type="submit" value="Registrar producto" id="registrar-producto">
                                 </form>
@@ -239,7 +238,7 @@
                                     <input type="tel" placeholder="Monto (c/u)" pattern="[0-9]{1,6}" required
                                         title="Por favor, ingresa una cantidad no mayor a $999.999">
                                     <p class="cuenta-gratis">Nombre del proveedor</p>
-                                    <select id="opciones" name="opciones" required>
+                                    <select id="opciones" name="proveedoresInventario" required>
                                         <option value="">-- Selecciona una opción --</option>
                                         <option value="nombre1">Luis Arango</option>
                                         <option value="nombre2">Camilo Peña</option>
@@ -578,7 +577,7 @@
 
                                     <div>
                                         <label for="total">Total:</label>
-                                        <input type="text" id="totalPedido" name="total" readonly>
+                                        <input type="text" id="totalPedido" name="totalPedido" readonly>
                                     </div>
                                     <input type="submit" value="Registrar pedido" id="registrar-pedido">
                                 </form>
@@ -612,7 +611,7 @@
                     <li>
                         <i class='bx bxs-group'></i>
                         <span class="text">
-                            <h3>20</h3>
+                            <h3><?php include 'cant-proveedores.php'; ?></h3>
                             <p>Proveedores</p>
                         </span>
                     </li>
@@ -634,7 +633,6 @@
                                     <th>Dirección</th>
                                     <th>Teléfono</th>
                                     <th>Correo</th>
-                                    <th>Nombre del producto que provee</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -650,7 +648,6 @@
                                     <td>Cl. x #a-b piso 11</td>
                                     <td>3216547898</td>
                                     <td>clondono@tienda.com</td>
-                                    <td>Caja de lápices</td>
                                 </tr>
                                 
                             </tbody>
@@ -661,16 +658,16 @@
                                 <button class="close-button" id="close-button-proveedores">
                                     <i class='bx bx-x-circle' style="color: white"></i>
                                 </button>
-                                <form class="formulario-add" id="formularioRegistroProveedor">
+                                <form action="agregar-proveedor.php" method="POST" class="formulario-add" id="formularioRegistroProveedor">
                                     <h2 class="create-account">Registra un proveedor</h2>
                                     <p class="cuenta-gratis">Ingresa los datos del proveedor</p>
-                                    <input type="tel" placeholder="NIT/CC (Identificación)" pattern="[0-9]{1,10}"
-                                        title="Por favor, ingresa el número. No mayor a 13 dígitos, sin espacios, ni guiones o puntos">
-                                    <input type="text" placeholder="Nombre del proveedor" pattern="[A-Za-z\s]{1,30}"
-                                        required title="Por favor, ingresa solo letras, números y espacios">
-                                    <input type="text" placeholder="Dirección" pattern="^[a-zA-Z0-9\s\-\#\,\.\']+"
-                                         title="Por favor, ingresa la dirección">
-                                    <input type="email" placeholder="Correo electrónico" required>
+                                    <input type="tel" name="nit" placeholder="NIT/CC (Identificación)" pattern="[0-9]{1,10}"
+                                        title="Por favor, ingresa el número. No mayor a 13 dígitos, sin espacios, ni guiones o puntos" required>
+                                    <input type="text" name="nombre" placeholder="Nombre del proveedor" pattern="[A-Za-z\s]{1,30}" required
+                                        title="Por favor, ingresa solo letras, números y espacios">
+                                    <input type="text" name="direccion" placeholder="Dirección" pattern="^[a-zA-Z0-9\s\-\#\,\.\']+" required
+                                        title="Por favor, ingresa la dirección">
+                                    <input type="email" name="correo" placeholder="Correo electrónico" required>
                                     <input type="submit" value="Registrar proveedor" id="registrar-proveedor">
                                 </form>
                             </div>
@@ -803,7 +800,7 @@
                     <li>
                         <i class='bx bxs-group'></i>
                         <span class="text">
-                            <h3>1</h3>
+                            <h3><?php include 'cant-empleados.php'; ?></h3>
                             <p>Empleados</p>
                         </span>
                     </li>
@@ -826,19 +823,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="modificarFormularioEmpleados()"><i
-                                                class='bx bxs-edit-alt'></i></button>
-                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="eliminarFormularioEmpleados()"><i
-                                                class='bx bxs-trash'></i></button>
-                                    </td>
-                                    <td>Gladys</td>
-                                    <td>Serrano</td>
-                                    <td>gserrano@gmail.com</td>
-                                    <td>Empleado</td>
-                                    <td>2002-08-11</td>
-                                </tr>
+                                <?php include 'lista-empleados.php'; ?>
                             </tbody>
                         </table>
                         <!--FORMULARIO DE MODIFICACIÓN-->

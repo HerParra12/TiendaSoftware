@@ -6,7 +6,7 @@
     require_once 'model/pedido.php';
     require_once 'model/venta.php';
     include './persistence/usuarioDAO.php';
-    include './persistence/provedorDAO.php';
+    include './persistence/proveedorDAO.php';
     include './persistence/inventarioDAO.php';
     include './persistence/pedidoDAO.php';
     include './persistence/ventaDAO.php';
