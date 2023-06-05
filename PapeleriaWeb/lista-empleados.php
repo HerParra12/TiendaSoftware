@@ -1,5 +1,6 @@
 <?php
 // Realiza la conexión a la base de datos
+/*
 $servidor = "localhost";
 $usuario = "root";
 $password = "";
@@ -36,5 +37,14 @@ if (mysqli_num_rows($resultado) > 0) {
 }
 
 // Cierra la conexión a la base de datos
-mysqli_close($conexion);
+mysqli_close($conexion);*/
+
+    require_once '../persistence/UsuarioDAO.php';
+    $nombre = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $email = $_POST['email'];
+    $fechaNacimiento = $_POST['fechaNacimiento'];
+    $rol = $_POST['rol'];
+    $usuarioDAO = new UsuarioDAO();
+    $usuarios = $usuarioDAO->mostrarLista();
 ?>
