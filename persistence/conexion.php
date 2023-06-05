@@ -32,8 +32,8 @@
 		 */
 		public function __construct() {
 
-			$this->host = "localhost:3310";
-			$this->dataName = "rosita";
+			$this->host = "localhost";
+			$this->dataName = "papeleriadb";
 			$this->username = "root";
 			$this->password = "";
 		}
