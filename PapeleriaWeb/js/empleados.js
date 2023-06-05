@@ -25,11 +25,9 @@ const modificarEmpleadosBackground = document.getElementById("modificarEmpleados
   // Event listener para cerrar el formulario del empleados al hacer clic en el botón de cierre
   closeButtonModificarEmpleados.addEventListener("click", function () {
     cerrarModificarEmpleados();
-	document.getElementById("formularioModificarEmpleados").reset();
   });
   closeButtonEliminarEmpleados.addEventListener("click", function(){
 	cerrarEliminarEmpleados();
-	document.getElementById("formularioEliminarEmpleados").reset();
   })
 
   // Event listener para cerrar el formulario al hacer clic fuera del formulario-container
@@ -43,11 +41,3 @@ const modificarEmpleadosBackground = document.getElementById("modificarEmpleados
 		cerrarEliminarEmpleados();
     }
   });
-
-document.getElementById("formularioModificacionEmpleados").addEventListener("submit", function() {
-	this.reset();
-});
-
-document.getElementById("formularioEliminacionEmpleados").addEventListener("submit", function() {
-	this.reset();
-});

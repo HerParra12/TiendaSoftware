@@ -216,7 +216,7 @@
                                     <p class="cuenta-gratis">Nombre del proveedor</p>
                                     <select id="opciones" name="proveedoresInventario" required>
                                         <option value="">-- Selecciona una opción --</option>
-                                        <?php include 'obtener-proveedores.php';?>
+                                        <?php include 'obtener-proveedor.php';?>
                                     </select>
                                     <input type="submit" value="Registrar producto" id="registrar-producto">
                                 </form>
@@ -631,25 +631,11 @@
                                     <th>NIT</th>
                                     <th>Nombre del proveedor</th>
                                     <th>Dirección</th>
-                                    <th>Teléfono</th>
                                     <th>Correo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="modificarFormularioProveedores()"><i
-                                                class='bx bxs-edit-alt'></i></button>
-                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="eliminarFormularioProveedores()"><i
-                                                class='bx bxs-trash'></i></button>
-                                    </td>
-                                    <td>546124789-8</td>
-                                    <td>Camila Londoño</td>
-                                    <td>Cl. x #a-b piso 11</td>
-                                    <td>3216547898</td>
-                                    <td>clondono@tienda.com</td>
-                                </tr>
-                                
+                            <?php include 'lista-proveedores.php'; ?>
                             </tbody>
                         </table>
                         <!--FORMULARIO DE REGISTRO-->
@@ -754,9 +740,7 @@
                                     <p class="cuenta-gratis">Ingresa los telefonos del proveedor</p>
                                     <select id="opciones" name="nombreProveedor" required>
                                         <option value="">-- Selecciona un proveedor --</option>
-                                        <option value="proveedor1">Proveedor 1</option>
-                                        <option value="proveedor2">Proveedor 2</option>
-                                        <option value="proveedor3">Proveedor 3</option>
+                                        <?php include 'obtener-proveedor.php';?>
                                     </select>
                                     <div class="formulario-telefonos-container">
                                         <div class="form-group-telefonos">

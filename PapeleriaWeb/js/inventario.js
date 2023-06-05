@@ -63,15 +63,4 @@ const formularioBackgroundInventario = document.getElementById("formularioInvent
     }
   });
 
-  document.getElementById("formularioRegistroInventario").addEventListener("submit", function() {
-	this.reset();
-});
-
-document.getElementById("formularioModificacionInventario").addEventListener("submit", function() {
-	this.reset();
-});
-
-document.getElementById("formularioEliminacionInventario").addEventListener("submit", function() {
-	this.reset();
-});
 

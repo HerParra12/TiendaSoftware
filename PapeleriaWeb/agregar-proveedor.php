@@ -8,5 +8,6 @@
     $direccion = $_POST['direccion'];
     $correo = $_POST['correo'];
     $proveedorDAO -> agregar(new Proveedor(0, $nit, $nombre, $direccion, $correo, array()));
-    
+    header("Location: papeleria.php");
+    exit();   
 ?>

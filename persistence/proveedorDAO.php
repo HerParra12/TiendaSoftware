@@ -103,6 +103,17 @@
 
 			return $result['count'];
 		}
+
+		public function obtenerNombresProveedores() {
+			$nombresProveedores = array();
+			$query = "SELECT nombre FROM Proveedor";
+			$lista = $this->util->mostrarLista($this->link, $query, array());
+
+			foreach ($lista as $value) {
+				$nombresProveedores[] = $value['nombre'];
+			}
+			return $nombresProveedores;
+		}
 	}
 
 ?>
