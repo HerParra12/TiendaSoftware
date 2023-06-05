@@ -16,10 +16,5 @@
     $inventarioDao = new InventarioDAO();
     $pedidioDao = new PedidoDAO();
     $ventaDao = new VentaDAO();
-
-
-    $lista = $usuarioDao -> mostrarLista();
-    foreach($lista as $value) {
-        echo $value . "<br><br>";
-    }
+    
 ?> 
