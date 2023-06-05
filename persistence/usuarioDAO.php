@@ -1,4 +1,7 @@
 <?php
+
+	require_once 'crud.php';
+    require_once 'conexion.php';
 	/**
 	 * Clase UsuarioDAO
 	 * 
