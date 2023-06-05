@@ -1,5 +1,8 @@
 <?php
 
+	require_once 'crud.php';
+    require_once 'conexion.php';
+	require_once 'DAOUtil.php';
 	/**
 	 * Clase PedidoDAO
 	 * 
@@ -33,11 +36,13 @@
 				":idProveedor" => $nuevoPedido->getIdProveedor(),
 				":idProducto" => $nuevoPedido->getIdProducto(),
 				":idUsuario" => $nuevoPedido->getIdUsuario(),
-				":fechaPedido" => $nuevoPedido->getFecha()
+				":fechaPedido" => $nuevoPedido->getFecha(),
+				":totalPedido" => $nuevoPedido->getTotalPedido()
 			);
-			$this->util->agregar($this->link, "INSERT INTO Pedido VALUES(null, :idProveedor, :idProducto, :idUsuario, :fechaPedido)", $mapa);
+			$this->util->agregar($this->link, "INSERT INTO Pedido (null, id_proveedor, id_usuario, fecha_pedido, total_pedido) VALUES (:idProveedor, :idUsuario, :fechaPedido, :totalPedido)", $mapa);
 			$this->mostrarLista();
 		}
+
 
 		/**
 		 * Método para eliminar un pedido por su ID.
