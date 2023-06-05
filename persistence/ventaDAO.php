@@ -75,6 +75,7 @@
 		 * @return array Un array de objetos Venta que representa la lista de todas las ventas.
 		 */
 		public function mostrarLista() {
+			$this -> listaVentas = array();
 			$lista = $this->util->mostrarLista($this->link, "SELECT * FROM Venta", array());
 			$query = "SELECT ve.fecha_venta, ve.total_venta FROM venta ve, ventainventario vi, inventario inv WHERE ve.id_venta = vi.id_venta AND vi.id_inventario = inv.id_inventario AND ve.id_venta = :id";
 			foreach ($lista as $value) {
