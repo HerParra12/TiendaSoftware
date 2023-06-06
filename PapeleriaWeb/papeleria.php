@@ -631,25 +631,11 @@
                                     <th>NIT</th>
                                     <th>Nombre del proveedor</th>
                                     <th>Dirección</th>
-                                    <th>Teléfono</th>
                                     <th>Correo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="modificarFormularioProveedores()"><i
-                                                class='bx bxs-edit-alt'></i></button>
-                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="eliminarFormularioProveedores()"><i
-                                                class='bx bxs-trash'></i></button>
-                                    </td>
-                                    <td>546124789-8</td>
-                                    <td>Camila Londoño</td>
-                                    <td>Cl. x #a-b piso 11</td>
-                                    <td>3216547898</td>
-                                    <td>clondono@tienda.com</td>
-                                </tr>
-                                
+                                <?php include 'lista-proveedores.php' ?>
                             </tbody>
                         </table>
                         <!--FORMULARIO DE REGISTRO-->
@@ -681,13 +667,13 @@
                                 <form class="formulario-add" id="formularioModificarProveedor">
                                     <h2 class="create-account">Modifica un proveedor</h2>
                                     <p class="cuenta-gratis">Ingresa los datos del proveedor</p>
-                                    <input type="tel" placeholder="NIT/CC (Identificación)" pattern="[0-9]{1,10}"
+                                    <input type="tel" name="nit" placeholder="NIT/CC (Identificación)" pattern="[0-9]{1,10}"
                                         title="Por favor, ingresa el número. No mayor a 13 dígitos, sin espacios, ni guiones o puntos">
-                                    <input type="text" placeholder="Nombre del proveedor" pattern="[A-Za-z\s]{1,30}"
+                                    <input type="text" name="nombre" placeholder="Nombre del proveedor" pattern="[A-Za-z\s]{1,30}"
                                         required title="Por favor, ingresa solo letras, números y espacios">
-                                    <input type="text" placeholder="Dirección" pattern="^[a-zA-Z0-9\s\-\#\,\.\']+"
+                                    <input type="text" name="direccion" placeholder="Dirección" pattern="^[a-zA-Z0-9\s\-\#\,\.\']+"
                                          title="Por favor, ingresa la dirección">
-                                    <input type="email" placeholder="Correo electrónico" required>
+                                    <input type="email" name="correo" placeholder="Correo electrónico" required>
                                     <input type="submit" value="Modificar proveedor" id="modificar-proveedor">
                                 </form>
                             </div>
