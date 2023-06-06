@@ -1,5 +1,4 @@
 <?php
-
 	require_once 'crud.php';
 	require_once 'conexion.php';
 	require_once 'DAOUtil.php';
@@ -16,6 +15,12 @@
 			$this->util = new DAOUtil();
 		}
 
+		/**
+		 * Agrega una nueva compra a la base de datos.
+		 *
+		 * @param Compra $nuevaCompra La nueva compra a agregar.
+		 * @return void
+		 */
 		public function agregar($nuevaCompra) {
 			$mapa = array(
 				":idPedido" => $nuevaCompra->getIdPedido(),
@@ -27,11 +32,24 @@
 			$this->mostrarLista();
 		}
 
+		/**
+		 * Elimina una compra de la base de datos.
+		 *
+		 * @param int $idCompra El ID de la compra a eliminar.
+		 * @return void
+		 */
 		public function eliminar($idCompra) {
 			$this->util->eliminar($this->link, "DELETE FROM Compra WHERE id_compra = :id", $idCompra);
 			$this->mostrarLista();
 		}
 
+		/**
+		 * Actualiza una compra en la base de datos.
+		 *
+		 * @param int $idCompra El ID de la compra a actualizar.
+		 * @param Compra $nuevaCompra Los nuevos datos de la compra.
+		 * @return void
+		 */
 		public function actualizar($idCompra, $nuevaCompra) {
 			$mapa = array(
 				":id" => $idCompra,
@@ -44,6 +62,11 @@
 			$this->mostrarLista();
 		}
 
+		/**
+		 * Muestra la lista de compras almacenadas en la base de datos.
+		 *
+		 * @return array La lista de compras.
+		 */
 		public function mostrarLista() {
 			$lista = $this->util->mostrarLista($this->link, "SELECT * FROM Compra", array());
 			foreach ($lista as $value) {
@@ -53,16 +76,17 @@
 			return $this->listaCompras;
 		}
 		
-		public function contarCompras() {
-			$statement = $this->link->prepare("SELECT COUNT(*) as count FROM Compra");
+		/**
+		 * Obtiene el monto total de todas las compras.
+		 *
+		 * @return float El monto total de las compras.
+		 */
+		public function obtenerMontoTotalCompras() {
+			$statement = $this->link->prepare("SELECT SUM(monto_total) as total FROM Compra");
 			$statement->execute();
 			$result = $statement->fetch(PDO::FETCH_ASSOC);
 
-			return $result['count'];
+			return $result['total'];
 		}
-		
-		
-		
 	}
-
 ?>
