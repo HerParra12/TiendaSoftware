@@ -9,7 +9,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   // Crea una instancia de UsuarioDAO
   $usuarioDAO = new UsuarioDAO();
   $usuarioDAO -> validar($correo,$rol);
-  header("Location: papeleria.php");
-  exit();
+  
 }
 ?>

@@ -13,5 +13,6 @@
 		echo "<td>" . $proveedor -> getDireccion() . "</td>";
         echo "<td>" . $proveedor -> getCorreo() . "</td>";
         echo "</tr>";
+        
     } 
 ?>

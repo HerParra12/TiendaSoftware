@@ -58,12 +58,14 @@
 				":rol" => $rol
 			);
 		
-			$query = "SELECT correo, rol FROM nombres WHERE correo = :correo AND rol = :rol";
+			$query = "SELECT correo, rol FROM usuario WHERE correo = :correo AND rol = :rol";
 			$result = $this->util->consultar($this->link, $query, $mapa);
 		
 			if ($result && $result->rowCount() > 0) {
 				// El correo y el rol coinciden en la base de datos
 				$this->mostrarLista();
+				header("Location: papeleria.php");
+  				exit();
 			} else {
 				// El correo y el rol no coinciden en la base de datos
 				// Puedes mostrar un mensaje de error o realizar alguna otra acción
