@@ -1,5 +1,5 @@
 <?php
-
+	require_once '../model/pedido.php';
 	require_once 'crud.php';
     require_once 'conexion.php';
 	require_once 'DAOUtil.php';

@@ -473,7 +473,7 @@
                     <li>
                         <i class='bx bx-receipt'></i>
                         <span class="text">
-                            <h3>2834</h3>
+                            <h3><?php include 'cant-pedidos.php'; ?></h3>
                             <p>Órdenes de pedido</p>
                         </span>
                     </li>
