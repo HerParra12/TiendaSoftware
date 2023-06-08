@@ -497,9 +497,7 @@
                             <thead>
                                 <tr>
                                     <th>Acción</th>
-                                    <th>Nombre del producto</th>
-                                    <th>Cantidad</th>
-                                    <th>Proveedor</th>
+                                    <th>fecha</th>
                                     <th>Monto</th>
                                 </tr>
                             </thead>
@@ -509,10 +507,7 @@
                                         <button id="modify-fila" style="border: none; background-color: transparent;" onclick="eliminarFormularioPedidos()"><i
                                                 class='bx bxs-trash'></i></button>
                                     </td>
-                                    <td>Resma de papel</td>
-                                    <td>10</td>
-                                    <td>Luis Arango</td>
-                                    <td>$ 24.000</td>
+                                    <?php include 'lista-pedido.php'; ?>
                                 </tr>                                
                             </tbody>
                         </table>
