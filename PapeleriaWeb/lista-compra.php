@@ -1,4 +1,5 @@
 <?php
+    
     require_once '../persistence/compraDAO.php';
     $compraDao = new CompraDAO();
     $lista = $compraDao->mostrarLista();
@@ -14,4 +15,5 @@
         echo "<td>" . $compra->getEstado() . "</td>";
         echo "</tr>";
     } 
+    
 ?>
