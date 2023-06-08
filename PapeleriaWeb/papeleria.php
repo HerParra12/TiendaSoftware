@@ -438,7 +438,7 @@
                                         onclick="modificarFormularioCompras()"><i
                                             class='bx bxs-edit-alt'></i></button></td>
                                     <!--LISTA COMPRA-->
-                                    <!--><?php include 'lista-compra.php' ?><-->
+                                    <td><?php include 'lista-compra.php'; ?></td>
                                     <td>200000845612</td>
                                     <td>10-05-2023</td>
                                     <td>$ 280.000</td>

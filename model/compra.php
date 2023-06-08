@@ -8,9 +8,9 @@ class Compra {
 
     private $idCompra;
     private $idPedido;
-    private $medioPago;
-    private $estado;
     private $fecha;
+    private $montoTotal;
+    private $estado;
 
     /**
      * Constructor de la clase.
@@ -18,16 +18,16 @@ class Compra {
      *
      * @param mixed $idCompra El ID de la compra.
      * @param mixed $idPedido El ID del pedido asociado a la compra.
-     * @param mixed $medioPago El medio de pago utilizado en la compra.
-     * @param mixed $estado El estado de la compra.
      * @param mixed $fecha La fecha de la compra.
+     * @param mixed $montoTotal El monto total de la compra.
+     * @param mixed $estado El estado de la compra.
      */
-    public function __construct($idCompra, $idPedido, $medioPago, $estado, $fecha) {
+    public function __construct($idCompra, $idPedido, $fecha, $montoTotal, $estado) {
         $this->idCompra = $idCompra;
         $this->idPedido = $idPedido;
-        $this->medioPago = $medioPago;
-        $this->estado = $estado;
         $this->fecha = $fecha;
+        $this->montoTotal = $montoTotal;
+        $this->estado = $estado;
     }
     
     /**
@@ -39,9 +39,9 @@ class Compra {
     public function __toString() {
         return "idCompra: " . $this->idCompra . "\n" . 
                "idPedido: " . $this->idPedido . "\n" .
-               "medio pago: " . $this->medioPago . "\n" .
-               "estado: " . $this->estado . "\n" .
-               "fecha: " . $this->fecha;
+               "fecha: " . $this->fecha . "\n" .
+               "montoTotal: " . $this->montoTotal . "\n" .
+               "estado: " . $this->estado;
     }
 
     /**
@@ -83,22 +83,41 @@ class Compra {
     }
 
     /**
-     * Método getter para obtener el medio de pago utilizado en la compra.
+     * Método getter para obtener la fecha de la compra.
      *
-     * @return mixed El medio de pago utilizado en la compra.
+     * @return mixed La fecha de la compra.
      */
-    public function getMedioPago() {
-        return $this->medioPago;
+    public function getFecha() {
+        return $this->fecha;
     }
 
     /**
-     * Método setter para establecer el medio de pago utilizado en la compra.
+     * Método setter para establecer la fecha de la compra.
      *
-     * @param mixed $medioPago El medio de pago utilizado en la compra.
+     * @param mixed $fecha La fecha de la compra.
      * @return void
      */
-    public function setMedioPago($medioPago) {
-        $this->medioPago = $medioPago;
+    public function setFecha($fecha) {
+        $this->fecha = $fecha;
+    }
+
+    /**
+     * Método getter para obtener el monto total de la compra.
+     *
+     * @return mixed El monto total de la compra.
+     */
+    public function getMontoTotal() {
+        return $this->montoTotal;
+    }
+
+    /**
+     * Método setter para establecer el monto total de la compra.
+     *
+     * @param mixed $montoTotal El monto total de la compra.
+     * @return void
+     */
+    public function setMontoTotal($montoTotal) {
+        $this->montoTotal = $montoTotal;
     }
 
     /**
@@ -118,25 +137,6 @@ class Compra {
      */
     public function setEstado($estado) {
         $this->estado = $estado;
-    }
-
-    /**
-     * Método getter para obtener la fecha de la compra.
-     *
-     * @return mixed La fecha de la compra.
-     */
-    public function getFecha() {
-        return $this->fecha;
-    }
-
-    /**
-     * Método setter para establecer la fecha de la compra.
-     *
-     * @param mixed $fecha La fecha de la compra.
-     * @return void
-     */
-    public function setFecha($fecha) {
-        $this->fecha = $fecha;
     }
 }
 ?>
