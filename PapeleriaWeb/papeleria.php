@@ -480,7 +480,7 @@
                     <li>
                         <i class='bx bxs-dollar-circle'></i>
                         <span class="text">
-                            <h3>$3'564.256</h3>
+                            <h3><?php include 'monto-pedido.php'; ?></h3>
                             <p>Monto total en pedidos</p>
                         </span>
                     </li>
@@ -497,9 +497,7 @@
                             <thead>
                                 <tr>
                                     <th>Acción</th>
-                                    <th>Nombre del producto</th>
-                                    <th>Cantidad</th>
-                                    <th>Proveedor</th>
+                                    <th>fecha</th>
                                     <th>Monto</th>
                                 </tr>
                             </thead>
@@ -509,10 +507,7 @@
                                         <button id="modify-fila" style="border: none; background-color: transparent;" onclick="eliminarFormularioPedidos()"><i
                                                 class='bx bxs-trash'></i></button>
                                     </td>
-                                    <td>Resma de papel</td>
-                                    <td>10</td>
-                                    <td>Luis Arango</td>
-                                    <td>$ 24.000</td>
+                                    <?php include 'lista-pedido.php'; ?>
                                 </tr>                                
                             </tbody>
                         </table>
@@ -522,6 +517,7 @@
                                 <button class="close-button" id="close-button-pedidos">
                                     <i class='bx bx-x-circle' style="color: white"></i>
                                 </button>
+                                <!--Acaaaaaaaaaaaaaaaaaaaa-->
                                 <form class="formulario-add" id="pedidos-form">
                                     <h2 class="create-account">Registra un pedido</h2>
                                     <p class="cuenta-gratis">Ingresa los datos para generar la orden de pedido</p>

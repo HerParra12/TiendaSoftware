@@ -89,6 +89,15 @@
 			}
 			return $this->listaPedidos;
 		}
+		
+		public function obtenerMontoTotalPedidos() {
+        $statement = $this->link->prepare("SELECT SUM(total_pedido) as total FROM Pedido");
+        $statement->execute();
+        $result = $statement->fetch(PDO::FETCH_ASSOC);
+
+        return $result['total'];
+    }
+		
 	}
 
 ?>
