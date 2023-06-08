@@ -399,13 +399,17 @@
                     <li>
                         <i class='bx bxs-shopping-bags'></i>
                         <span class="text">
-                            <h3>2834</h3>
+                            <h3>eta monda no sirve</h3>
+                            <!--CANTIDAD COMPRA-->
+                            <!--<h3><?php include 'cant-compras.php'; ?></h3>-->
                             <p>Compras</p>
                         </span>
                     </li>
                     <li>
                         <i class='bx bxs-dollar-circle'></i>
                         <span class="text">
+                            <!--MONTO COMPRA-->
+                            <!--<h3><?php include 'monto-compras.php'; ?></h3>-->
                             <h3>$3'564.256</h3>
                             <p>Monto total de compras</p>
                         </span>
@@ -433,6 +437,8 @@
                                     <td><button id="modify-fila" style="border: none; background-color: transparent;"
                                         onclick="modificarFormularioCompras()"><i
                                             class='bx bxs-edit-alt'></i></button></td>
+                                    <!--LISTA COMPRA-->
+                                    <td><?php include 'lista-compra.php'; ?></td>
                                     <td>200000845612</td>
                                     <td>10-05-2023</td>
                                     <td>$ 280.000</td>
