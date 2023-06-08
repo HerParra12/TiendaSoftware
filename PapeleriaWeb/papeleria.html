@@ -316,8 +316,8 @@
                             </tbody>
                         </table>
                         <!--FORMULARIO DE REGISTRO-->
-                        <div class="formulario-background" id="formularioVentas">
-                            <div class="formulario-container" id="formularioVentasContainer">
+                        <div class="formulario-background-ventas" id="formularioVentas">
+                            <div class="formulario-container-ventas" id="formularioVentasContainer">
                                 <button class="close-button" id="close-button-ventas">
                                     <i class='bx bx-x-circle' style="color: white"></i>
                                 </button>
@@ -327,15 +327,15 @@
                                     <a href="#" id="procesar-venta-btn">
                                     <i class='bx bx-save' style='color:#283591'></i></a>
                                 </div>
-                                <table>
+                                <table style="background-color: rgb(16, 54, 82, 0.3); border-radius: 1%;">
                                     <thead>
                                         <tr>
                                             <th width="30px">Código</th>
                                             <th>Producto</th>
                                             <th>Existencia</th>
-                                            <th width="100px">Cantidad</th>
-                                            <th>Precio</th>
-                                            <th>Precio total</th>
+                                            <th width="10px">Cantidad</th>
+                                            <th class="textright">Precio</th>
+                                            <th class="textright">Precio total</th>
                                             <th>Acción</th>  
                                         </tr>
                                         <tr>
@@ -343,19 +343,52 @@
                                             <td id="txt-descripcion"></td>
                                             <td id="txt_existencia"></td>
                                             <td><input type="text" name="txt_cant_producto" id="txt_cant_producto" value="0" min="1" disabled></td>
-                                            <td id="txt_precio">0.00</td>
+                                            <td id="txt_precio" class="textright">0.00</td>
+                                            <td id="txt_precio_total" class="textright">0.00</td>
                                             <td><a href="#" id="add_product_venta" class="link_add"><i class='bx bx-plus-circle'></i></td>
-                                            <td></td>
+                                            
                                         </tr>
                                         <tr>
                                             <th>Código</th>
                                             <th colspan="2">Descripción</th>
                                             <th>Cantidad</th>
-                                            <th>Precio</th>
-                                            <th>Precio total</th>
+                                            <th class="textright">Precio</th>
+                                            <th class="textright">Precio total</th>
                                             <th>Acción</th>
                                         </tr>
                                     </thead>
+                                    <tbody id="detalle_venta">
+                                        <tr>
+                                            <td>1</td>
+                                            <td colspan="2">Bloc de hojas</td>
+                                            <td class="textcenter">1</td>
+                                            <td class="textright">100.00</td>
+                                            <td class="textright">100.00</td>
+                                            <td class="">
+                                                <a href="#" class="link_delete" onclick="event.preventDefault(); del_product_detalle(1);"><i class='bx bx-trash' style='color:#283591' ></i></a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>1</td>
+                                            <td colspan="2">Pliego de cartulina</td>
+                                            <td class="textcenter">1</td>
+                                            <td class="textright">150.00</td>
+                                            <td class="textright">150.00</td>
+                                            <td class="">
+                                                <a href="#" class="link_delete" onclick="event.preventDefault(); del_product_detalle(1);"><i class='bx bx-trash' style='color:#283591' ></i></a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                            <td colspan="5" class="textright">SUBTOTAL</td>
+                                            <td class="textright">88.0</td>
+                                        </tr>
+                                        <tr>
+                                            <td colspan="5" class="textright">IVA (12%)</td>
+                                            <td class="textright">12</td>
+                                        </tr>
+                                    </tfoot>
                                 </table>
                             </div>
                         </div>

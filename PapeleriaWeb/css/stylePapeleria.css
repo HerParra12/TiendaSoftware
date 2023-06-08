@@ -528,12 +528,54 @@ body {
     justify-content: center;
 }
 
+.formulario-background-ventas{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    backdrop-filter: blur(4px);
+    background-color:transparent;
+    z-index: 1;
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario-container-ventas{
+    position: relative;
+    margin-top: 5%;
+    margin-inline: 30%;
+    background-color: var(--light-blue);
+    width: 900px;
+    height: 680px;
+    padding: 1.5rem;
+    border-radius: 8px;
+    animation-name: modal;
+    animation-duration: .5s;
+    box-shadow: o 5px 15px -5px rgba(15, 255, 248, 0.7);
+    z-index: 10;
+    overflow-y: scroll;
+    overflow-x:hidden;
+}
+
+.textright{
+	text-align: right;
+}
+
+.textcenter{
+	text-align: center;
+}
+.textleft{
+	text-align: left;
+}
+
 .formulario-container{
     position: relative;
     margin-top: 5%;
     margin-inline: 40%;
     background-color: var(--light-blue);
-    width: 900px;
+    width: 550px;
     height: 680px;
     padding: 1.5rem;
     border-radius: 8px;
