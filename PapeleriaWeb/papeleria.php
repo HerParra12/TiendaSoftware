@@ -431,14 +431,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td><button id="modify-fila" style="border: none; background-color: transparent;"
-                                        onclick="modificarFormularioCompras()"><i
-                                            class='bx bxs-edit-alt'></i></button></td>
-                                    <!--LISTA COMPRA-->
-                                    <?php include 'lista-compra.php'; ?>
-                                    <td><span class="status completed">Pagado</span></td>
-                                </tr>
+                                <?php include 'lista-compra.php' ?>
                             </tbody>
                         </table>
                         <!--FORMULARIO DE MODIFICACIÓN-->
@@ -447,12 +440,13 @@
                                 <button class="close-button" id="close-button-modificar-compras">
                                     <i class='bx bx-x-circle' style="color: white"></i>
                                 </button>
-                                <form class="formulario-add" id="formularioModificarCompra">
+                                <form class="formulario-add" id="formularioModificarCompraEstado">
                                     <h2 class="create-account">Modifica una compra</h2>
                                     <label for="estadoCompra">Cambia el estado de tu compra</label>
-                                    <select id="opciones" name="estadoCompra" required>
+                                    <select id="opciones" name="estado" required>
                                         <option value="">-- Selecciona una opción --</option>
-                                        <option value="pago">Pago</option>
+                                        <option value="activo" id="opciones">Activo</option>
+                                        <option value="inactivo" id="opciones">Inactivo</option>
                                     </select>
                                     <input type="submit" value="Modificar compra" id="modificarCompra">
                                 </form>
@@ -501,14 +495,8 @@
                                     <th>Monto</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr>
-                                    <td>
-                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="eliminarFormularioPedidos()"><i
-                                                class='bx bxs-trash'></i></button>
-                                    </td>
-                                    <?php include 'lista-pedido.php'; ?>
-                                </tr>                                
+                            <tbody>                      
+                                <?php include 'lista-pedido.php'; ?>
                             </tbody>
                         </table>
                         <!--FORMULARIO DE REGISTRO-->

@@ -55,12 +55,9 @@ class CompraDAO implements CRUD {
     public function actualizar($idCompra, $nuevaCompra) {
         $mapa = array(
             ":id" => $idCompra,
-            ":idPedido" => $nuevaCompra->getIdPedido(),
-            ":fecha" => $nuevaCompra->getFecha(),
-            ":montoTotal" => $nuevaCompra->getMontoTotal(),
             ":estado" => $nuevaCompra->getEstado()
         );
-        $this->util->actualizar($this->link, "UPDATE Compra SET id_pedido = :idPedido, fecha = :fecha, monto_total = :montoTotal, estado = :estado WHERE id_compra = :id", $mapa);
+        $this->util->actualizar($this->link, "UPDATE Compra SET estado = :estado WHERE id_compra = :id", $mapa);
         $this->mostrarLista();
     }
 

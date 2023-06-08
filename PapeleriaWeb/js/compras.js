@@ -1,5 +1,7 @@
+let idCompra = id
 //Compras
-function modificarFormularioCompras() {
+function modificarFormularioCompras(id) {
+    idCompra = id
     const modificarCompras = document.getElementById("modificarCompras");
     modificarCompras.style.display = "block";
   }
@@ -15,7 +17,7 @@ function cerrarModificarCompras() {
 // Event listener para cerrar el formulario del inventario al hacer clic en el botón de cierre
 closeButtonModificarCompras.addEventListener("click", function () {
 	cerrarModificarCompras();
-	document.getElementById("formularioModificarCompra").reset();
+	//document.getElementById("formularioModificarCompra").reset();
 });
 
 // Event listener para cerrar el formulario al hacer clic fuera del formulario-container
@@ -23,8 +25,21 @@ modificarComprasBackground.addEventListener("click", function (event) {
   if (event.target === modificarComprasBackground) {
 	cerrarModificarCompras();
   }
-}); 
+});
 
-document.getElementById("formularioModificarCompra").addEventListener("submit", function() {
-	this.reset();
+const consumerCompras = async ({ request, init }) => {
+  init = { method: 'POST', ...init  }
+  return await fetch(request, init)
+    .then(response => response.json())
+    .catch(() => console.log('Chispas'))
+}
+
+document.getElementById("formularioModificarCompraEstado").addEventListener("submit", function(event) {
+  event.preventDefault()
+  const formData = new FormData(event.target)
+  formData.append('id', idCompra)
+  for(const [key, value] of formData.entries()) {
+    console.log(`key: ${key}, value: ${value}`)
+  }
+  consumerCompras({ request: './actualizar-compra.php', init: { body: formData } }).then(response => console.log(response))
 });
