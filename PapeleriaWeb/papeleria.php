@@ -399,9 +399,9 @@
                     <li>
                         <i class='bx bxs-shopping-bags'></i>
                         <span class="text">
-                            <h3>eta monda no sirve</h3>
+                            <!--<h3>eta monda no sirve</h3>-->
                             <!--CANTIDAD COMPRA-->
-                            <!--<h3><?php include 'cant-compras.php'; ?></h3>-->
+                            <h3><?php include 'cant-compras.php' ?></h3>
                             <p>Compras</p>
                         </span>
                     </li>
