@@ -86,7 +86,11 @@
 			foreach ($lista as $value) {
 				$idProveedor = $value['id_proveedor'];
 				$telefonos = $this->util->mostrarLista($this->link, "SELECT * FROM Telefono WHERE id_proveedor = :id", array(":id" => $idProveedor));
-				$proveedor = new Proveedor($idProveedor, $value['nit'], $value['nombre'], $value['direccion'], $value['correo'], $telefonos);
+				$numeros = array();
+				foreach($telefonos as $numero) {
+					$numeros[] = $numero['telefono'];
+				}
+				$proveedor = new Proveedor($idProveedor, $value['nit'], $value['nombre'], $value['direccion'], $value['correo'], $numeros);
 				$this->listaProveedores[] = $proveedor;
 			}
 			return $this->listaProveedores;

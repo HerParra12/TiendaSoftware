@@ -1,9 +1,12 @@
 //Empleados
-function modificarFormularioEmpleados() {
+let idEmpleado = -1
+function modificarFormularioEmpleados(id) {
+    idEmpleado = id
     const modificarEmpleados = document.getElementById("modificarEmpleados");
     modificarEmpleados.style.display = "block";
   }
-  function eliminarFormularioEmpleados() {
+  function eliminarFormularioEmpleados(id) {
+    idEmpleado = id
     const eliminarEmpleados = document.getElementById("eliminarEmpleados");
     eliminarEmpleados.style.display = "block";
   }
@@ -25,11 +28,11 @@ const modificarEmpleadosBackground = document.getElementById("modificarEmpleados
   // Event listener para cerrar el formulario del empleados al hacer clic en el botón de cierre
   closeButtonModificarEmpleados.addEventListener("click", function () {
     cerrarModificarEmpleados();
-	document.getElementById("formularioModificarEmpleados").reset();
+	//document.getElementById("formularioModificarEmpleados").reset();
   });
   closeButtonEliminarEmpleados.addEventListener("click", function(){
 	cerrarEliminarEmpleados();
-	document.getElementById("formularioEliminarEmpleados").reset();
+	//document.getElementById("formularioEliminarEmpleados").reset();
   })
 
   // Event listener para cerrar el formulario al hacer clic fuera del formulario-container
@@ -44,10 +47,27 @@ const modificarEmpleadosBackground = document.getElementById("modificarEmpleados
     }
   });
 
-document.getElementById("formularioModificacionEmpleados").addEventListener("submit", function() {
-	this.reset();
+const consumerEmpleado = async ({ request, init }) => {
+  init = { method: 'POST', ...init  }
+  return await fetch(request, init)
+    .then(response => response.json())
+    .catch(() => console.log('Chispas'))
+}
+
+document.getElementById("formularioModificarEmpleadoUsuario").addEventListener("submit", function(event) {
+  const formData = new FormData(event.target)
+  formData.append('id', idEmpleado)
+  consumerEmpleado({ request: './actualizar-empleado.php', init: { body: formData } }).then(response => console.log(response))
 });
 
-document.getElementById("formularioEliminacionEmpleados").addEventListener("submit", function() {
-	this.reset();
+document.getElementById("formularioEliminarEmpleado").addEventListener("submit", function(event) {
+  const init = {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ idEmpleado })
+  }
+  consumerEmpleado({ request: './eliminar-empleado.php', init }).then(response => console.log(response))
 });
+

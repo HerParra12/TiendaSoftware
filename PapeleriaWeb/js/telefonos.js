@@ -24,49 +24,6 @@ const telefonossContainer = document.querySelector(".formulario-telefonos-contai
 // Contador para asignar un ID único a cada div de telefono
 let telefonoCount = 1;
 
-// Agregar un div de telefono al hacer clic en el botón "agregar-telefono-btn"
-agregarTelefonoBtn.addEventListener("click", function() {
-  // Crea un nuevo div para el telefono
-  const nuevoTelefonoDiv = document.createElement("div");
-  nuevoTelefonoDiv.classList.add("form-group-telefonos");
-
-  // Crea el input para el telefono
-  const telefonoInput = document.createElement("input");
-  telefonoInput.type = "tel";
-  telefonoInput.placeholder = "Telefono";
-  telefonoInput.pattern = "[0-9]{1,10}";
-  telefonoInput.title = "Por favor, ingresa el número. No mayor a 10 dígitos, sin espacios, ni guiones o puntos";
-  nuevoTelefonoDiv.appendChild(telefonoInput);
-
-  // Crea el botón de eliminar
-  const deleteButton = document.createElement("button");
-  deleteButton.classList.add("delete-button");
-  deleteButton.innerHTML = '<i class="bx bx-trash"></i>';
-
-  // Estilos personalizados para el botón de eliminar
-  deleteButton.style.backgroundColor = "transparent";
-  deleteButton.style.color = "white";
-  deleteButton.style.border = "none";
-  deleteButton.style.padding = "5px";
-  deleteButton.style.borderRadius = "5px";
-
-  // Evento para eliminar el último div de telefono
-  deleteButton.addEventListener("click", function() {
-    if (telefonossContainer.children.length > 1) {
-        telefonossContainer.removeChild(nuevoTelefonoDiv);
-    }
-  });
-
-  // Agrega el botón de eliminar al div del nuevo telefono
-  nuevoTelefonoDiv.appendChild(deleteButton);
-
-  // Agrega el div del nuevo telefono al contenedor
-  telefonossContainer.appendChild(nuevoTelefonoDiv);
-
-  // Incrementa el contador de telefonos
-  telefonoCount++;
-});
-
   function resetFormularioTelefonos() {
 	while (telefonossContainer.children.length > 1) {
 		telefonossContainer.removeChild(telefonossContainer.lastChild);
@@ -78,7 +35,9 @@ agregarTelefonoBtn.addEventListener("click", function() {
   });
  }
 
- function eliminarFormularioTelefonos() {
+let numeroTelefonoProveedor = -1
+ function eliminarFormularioTelefonos(id) {
+    numeroTelefonoProveedor = id
     const eliminarTelefonos = document.getElementById("eliminarTelefonos");
     eliminarTelefonos.style.display = "block";
   }
@@ -92,13 +51,32 @@ const 	eliminarTelefonosBackground = document.getElementById("eliminarTelefonos"
 
 closeButtonEliminarTelefonos.addEventListener("click", function(){
 	cerrarEliminarTelefonos();
-	document.getElementById("formularioEliminarTelefonos").reset();
+	//document.getElementById("formularioEliminarTelefonos").reset();
   })
 eliminarTelefonosBackground.addEventListener("click", function (event) {
     if (event.target === eliminarTelefonosBackground) {
 		cerrarEliminarTelefonos();
     }
   });
-document.getElementById("formularioEliminarTelefonos").addEventListener("submit", function() {
-	this.reset();
+
+const consumerTelefono = async ({ request, init }) => {
+  init = { method: 'POST', ...init }
+  return await fetch(request, init)
+    .then(response => response.json())
+    .catch(error => console.log('Error', error))
+}
+
+
+document.getElementById("formularioEliminarTelefonos").addEventListener("submit", function (event) {
+  const init = {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ numeroTelefonoProveedor })
+  }
+  console.log(init)
+  consumerTelefono({ request: './eliminar-telefono.php', init }).then(response => console.log(response))
+  document.getElementById("eliminarProveedores").style.display = 'none'
+  eliminarTelefonosBackground.style.display = 'none'
 });

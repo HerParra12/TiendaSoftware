@@ -74,10 +74,9 @@ const consumer = async ({ request, init }) => {
 
 
 document.addEventListener('submit', event => {
-  event.preventDefault()
-  console.log(event.target)
   const target = event.target
   if (target.matches('form#formularioEliminarProveedor')) {
+    event.preventDefault()
     const init = {
       headers: {
         'Accept': 'application/json',
@@ -89,12 +88,14 @@ document.addEventListener('submit', event => {
     document.getElementById("eliminarProveedores").style.display = 'none'
     location.reload()
   } else if (target.matches('form#formularioModificarProveedor')) {
+    event.preventDefault()
     const formData = new FormData(event.target)
     formData.append('id', idProveedor)
     consumer({ request: './actualizar-proveedor.php', init: { body: formData } }).then(response => console.log(response))
     document.getElementById("modificarProveedores").style.display = 'none'
     location.reload()
   }else if(target.matches('form#formularioRegistroProveedor')) {
+    event.preventDefault()
     const formData = new FormData(event.target)
     consumer({ request: './agregar-proveedor.php', init: { body: formData } }).then(response => console.log(response))
     formularioBackgroundProveedores.style.display = 'none'

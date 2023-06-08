@@ -719,15 +719,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="eliminarFormularioTelefonos()"><i
-                                                class='bx bxs-trash'></i></button>
-                                    </td>
-                                    <td>Camila Londoño</td>
-                                    <td>3216547898</td>
-                                </tr>
-                                
+                                <?php include 'telefono-proveedor.php' ?>
                             </tbody>
                         </table>
                         <!--FORMULARIO DE REGISTRO-->
@@ -751,10 +743,6 @@
                                         title="Por favor, ingresa el número. No mayor a 10 dígitos, sin espacios, ni guiones o puntos">
                                         </div>
                                     </div>
-                                    <button id="agregar-telefono-btn" type="button"
-                                        style="border:none; background-color: transparent;">
-                                        <i class='bx bx-plus-circle' style="color: white"></i>
-                                    </button>
                                     <input type="submit" value="Registar teléfono" id="registrar-telefono">
                                 </form>
                             </div>
@@ -819,13 +807,13 @@
                                 <button class="close-button" id="close-button-modificar-empleados">
                                     <i class='bx bx-x-circle' style="color: white"></i>
                                 </button>
-                                <form class="formulario-add" id="formularioModificarEmpleado">
+                                <form class="formulario-add" id="formularioModificarEmpleadoUsuario">
                                     <h2 class="create-account">Modifica un empleado</h2>
                                     <p class="cuenta-gratis">Ingresa los datos del empleado</p>
-                                    <input type="text" placeholder="Nombres" pattern="[A-Za-z\s]+" readonly>
-                                    <input type="text" placeholder="Apellidos" pattern="[A-Za-z\s]+" readonly>
-                                    <input type="email" placeholder="Email" required title="Por favor, ingresa un email valido">
-                                    <input type="submit" value="Modificar empleado" id="modificar-empleado">
+                                    <input type="text" name="nombres" placeholder="Nombres" required>
+                                    <input type="text" name="apellidos" placeholder="Apellidos" required>
+                                    <input type="email" name="correo" placeholder="Email" required>
+                                    <input type="submit" value="Modificar empleado" id="modificarEmpleado">
                                 </form>
                             </div>
                         </div>

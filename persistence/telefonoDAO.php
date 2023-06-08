@@ -50,7 +50,7 @@ class TelefonoDAO implements CRUD
      */
     public function eliminar($idTelefono)
     {
-        $this->util->eliminar($this->link, "DELETE FROM Telefono WHERE id_telefono = :id", $idTelefono);
+        $this->util->eliminar($this->link, "DELETE FROM Telefono WHERE telefono = :id", $idTelefono);
     }
 
     /**
@@ -63,11 +63,10 @@ class TelefonoDAO implements CRUD
     public function actualizar($idTelefono, $nuevoTelefono)
     {
         $mapa = array(
-            ":id" => $idTelefono,
             ":idProveedor" => $nuevoTelefono->getIdProveedor(),
             ":telefono" => $nuevoTelefono->getTelefono()
         );
-        $this->util->agregar($this->link, "UPDATE Telefono SET id_proveedor = :idProveedor, telefono = :telefono WHERE id_telefono = :id", $mapa);
+        $this->util->actualizar($this->link, "UPDATE Telefono SET telefono = :telefono WHERE id_proveedor = :idProveedor", $mapa);
     }
 
     /**
