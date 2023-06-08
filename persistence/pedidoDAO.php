@@ -1,5 +1,5 @@
 <?php
-
+	require_once '../model/pedido.php';
 	require_once 'crud.php';
     require_once 'conexion.php';
 	require_once 'DAOUtil.php';
@@ -85,7 +85,7 @@
 			foreach ($lista as $value) {
 				$idPedido = $value['id_pedido'];
 				$listaInventario = $this->util->mostrarLista($this->link, $query, array(":id" => $idPedido));
-				$this->listaPedidos[] = new Pedido($idPedido, $value['idProveedor'], $value['idProducto'], $value['idUsuario'], $value['fechaPedido'], $listaInventario);
+				$this->listaPedidos[] =  new Pedido($idPedido, $value['id_proveedor'], $value['id_usuario'], $value['fecha_pedido'], $value['total_pedido'], $listaInventario);
 			}
 			return $this->listaPedidos;
 		}
