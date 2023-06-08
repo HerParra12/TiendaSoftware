@@ -9,5 +9,6 @@
     $correo = $_POST['correo'];
     $proveedorDAO -> agregar(new Proveedor(0, $nit, $nombre, $direccion, $correo, array()));
     header("Location: papeleria.php");
-    exit();   
+    exit();
+    echo json_encode(["Response" => true]);
 ?>

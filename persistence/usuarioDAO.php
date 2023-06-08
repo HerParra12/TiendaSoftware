@@ -80,7 +80,8 @@
 		 * @return void
 		 */
 		public function eliminar($idUsuario) {
-			$this->util->eliminar($this->link, "DELETE FROM Usuario WHERE id_usuario = :id", $idUsuario);
+			$this->util->eliminar($this->link, "DELETE FROM Telefono WHERE id_proveedor = :id", $idUsuario);
+			$this->util->eliminar($this->link, "DELETE FROM Usuario WHERE id_usuario = :id", $idUsuario); 
 			$this->mostrarLista();
 		}
 

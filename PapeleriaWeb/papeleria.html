@@ -173,6 +173,7 @@
                                     <th>Marca del producto</th>
                                     <th>Nombre del producto</th>
                                     <th>Cantidad</th>
+                                    <th>Proveedor</th>
                                     <th>Monto (c/u)</th>
                                 </tr>
                             </thead>
@@ -189,6 +190,7 @@
                                     <td>Marca del producto</td>
                                     <td>Resma de papel</td>
                                     <td>10</td>
+                                    <td>Luis Arango</td>
                                     <td>24.000</td>
                                 </tr>
                             </tbody>
@@ -214,7 +216,7 @@
                                     <p class="cuenta-gratis">Nombre del proveedor</p>
                                     <select id="opciones" name="proveedoresInventario" required>
                                         <option value="">-- Selecciona una opción --</option>
-                                        <?php include 'obtener-proveedor.php';?>
+                                        <?php include 'obtener-proveedores.php';?>
                                     </select>
                                     <input type="submit" value="Registrar producto" id="registrar-producto">
                                 </form>
@@ -316,80 +318,65 @@
                             </tbody>
                         </table>
                         <!--FORMULARIO DE REGISTRO-->
-                        <div class="formulario-background-ventas" id="formularioVentas">
-                            <div class="formulario-container-ventas" id="formularioVentasContainer">
+                        <div class="formulario-background" id="formularioVentas">
+                            <div class="formulario-container" id="formularioVentasContainer">
                                 <button class="close-button" id="close-button-ventas">
                                     <i class='bx bx-x-circle' style="color: white"></i>
                                 </button>
-                                <h2 class="create-account" style="color: #103652">Registra un pedido</h2>
-                                <p class="cuenta-gratis" style="color: #103652">Ingresa los datos para generar la orden de pedido</p>
-                                <div id="acciones_venta">
-                                    <a href="#" id="procesar-venta-btn">
-                                    <i class='bx bx-save' style='color:#283591'></i></a>
-                                </div>
-                                <table style="background-color: rgb(16, 54, 82, 0.3); border-radius: 1%;">
-                                    <thead>
-                                        <tr>
-                                            <th width="30px">Código</th>
-                                            <th>Producto</th>
-                                            <th>Existencia</th>
-                                            <th width="10px">Cantidad</th>
-                                            <th class="textright">Precio</th>
-                                            <th class="textright">Precio total</th>
-                                            <th>Acción</th>  
-                                        </tr>
-                                        <tr>
-                                            <td><input type="text" name="txt_cod_producto" id="txt_cod_producto"></td>
-                                            <td id="txt-descripcion"></td>
-                                            <td id="txt_existencia"></td>
-                                            <td><input type="text" name="txt_cant_producto" id="txt_cant_producto" value="0" min="1" disabled></td>
-                                            <td id="txt_precio" class="textright">0.00</td>
-                                            <td id="txt_precio_total" class="textright">0.00</td>
-                                            <td><a href="#" id="add_product_venta" class="link_add"><i class='bx bx-plus-circle'></i></td>
-                                            
-                                        </tr>
-                                        <tr>
-                                            <th>Código</th>
-                                            <th colspan="2">Descripción</th>
-                                            <th>Cantidad</th>
-                                            <th class="textright">Precio</th>
-                                            <th class="textright">Precio total</th>
-                                            <th>Acción</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody id="detalle_venta">
-                                        <tr>
-                                            <td>1</td>
-                                            <td colspan="2">Bloc de hojas</td>
-                                            <td class="textcenter">1</td>
-                                            <td class="textright">100.00</td>
-                                            <td class="textright">100.00</td>
-                                            <td class="">
-                                                <a href="#" class="link_delete" onclick="event.preventDefault(); del_product_detalle(1);"><i class='bx bx-trash' style='color:#283591' ></i></a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>1</td>
-                                            <td colspan="2">Pliego de cartulina</td>
-                                            <td class="textcenter">1</td>
-                                            <td class="textright">150.00</td>
-                                            <td class="textright">150.00</td>
-                                            <td class="">
-                                                <a href="#" class="link_delete" onclick="event.preventDefault(); del_product_detalle(1);"><i class='bx bx-trash' style='color:#283591' ></i></a>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <td colspan="5" class="textright">SUBTOTAL</td>
-                                            <td class="textright">88.0</td>
-                                        </tr>
-                                        <tr>
-                                            <td colspan="5" class="textright">IVA (12%)</td>
-                                            <td class="textright">12</td>
-                                        </tr>
-                                    </tfoot>
-                                </table>
+                                <form class="formulario-add" id="ventas-form">
+                                    <h2 class="create-account">Registra una venta</h2>
+                                    <p class="cuenta-gratis">Ingresa los datos de la venta</p>
+                                    <div id="productos-container">
+                                        <div class="form-group">
+                                            <label for="producto">Nombre del Producto</label>
+                                            <select id="opciones" name="producto" required>
+                                                <option value="">-- Selecciona un producto --</option>
+                                                <option value="producto1">Producto 1</option>
+                                                <option value="producto2">Producto 2</option>
+                                                <option value="producto3">Producto 3</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label for="cantidad">Cantidad</label>
+                                            <select id="opciones" name="cantidad" required>
+                                                <option value="">-- Selecciona una opción --</option>
+                                                <option value="uno">1</option>
+                                                <option value="dos">2</option>
+                                                <option value="tres">3</option>
+                                                <option value="cuatro">4</option>
+                                                <option value="cinco">5</option>
+                                                <option value="seis">6</option>
+                                                <option value="siete">7</option>
+                                                <option value="ocho">8</option>
+                                                <option value="nueve">9</option>
+                                                <option value="diez">10</option>
+                                                <option value="once">11</option>
+                                                <option value="doce">12</option>
+                                                <option value="trece">13</option>
+                                                <option value="catorce">14</option>
+                                                <option value="quince">15</option>
+                                                <option value="dieciseis">16</option>
+                                                <option value="diecisiete">17</option>
+                                                <option value="dieciocho">18</option>
+                                                <option value="diecinueve">19</option>
+                                                <option value="veinte">20</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <button id="agregar-btn" type="button"
+                                        style="border:none; background-color: transparent;">
+                                        <i class='bx bx-plus-circle' style="color: white"></i>
+                                    </button>
+
+                                    <div>
+                                        <label for="total">Total:</label>
+                                        <input type="text" id="totalVenta" name="total" readonly>
+                                    </div>
+
+                                    <input type="submit" value="Registrar venta" id="registrar-venta">
+                                </form>
                             </div>
                         </div>
 
@@ -644,11 +631,25 @@
                                     <th>NIT</th>
                                     <th>Nombre del proveedor</th>
                                     <th>Dirección</th>
+                                    <th>Teléfono</th>
                                     <th>Correo</th>
                                 </tr>
                             </thead>
                             <tbody>
-                            <?php include 'lista-proveedores.php'; ?>
+                                <tr>
+                                    <td>
+                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="modificarFormularioProveedores()"><i
+                                                class='bx bxs-edit-alt'></i></button>
+                                        <button id="modify-fila" style="border: none; background-color: transparent;" onclick="eliminarFormularioProveedores()"><i
+                                                class='bx bxs-trash'></i></button>
+                                    </td>
+                                    <td>546124789-8</td>
+                                    <td>Camila Londoño</td>
+                                    <td>Cl. x #a-b piso 11</td>
+                                    <td>3216547898</td>
+                                    <td>clondono@tienda.com</td>
+                                </tr>
+                                
                             </tbody>
                         </table>
                         <!--FORMULARIO DE REGISTRO-->
@@ -753,7 +754,9 @@
                                     <p class="cuenta-gratis">Ingresa los telefonos del proveedor</p>
                                     <select id="opciones" name="nombreProveedor" required>
                                         <option value="">-- Selecciona un proveedor --</option>
-                                        <?php include 'obtener-proveedor.php';?>
+                                        <option value="proveedor1">Proveedor 1</option>
+                                        <option value="proveedor2">Proveedor 2</option>
+                                        <option value="proveedor3">Proveedor 3</option>
                                     </select>
                                     <div class="formulario-telefonos-container">
                                         <div class="form-group-telefonos">

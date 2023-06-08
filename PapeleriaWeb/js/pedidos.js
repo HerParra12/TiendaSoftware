@@ -122,7 +122,8 @@ deletePedidosButton.addEventListener("click", function() {
   });
  }
 
- function eliminarFormularioPedidos() {
+ function eliminarFormularioPedidos(id) {
+    idPedido = id
     const eliminarPedidos = document.getElementById("eliminarPedidos");
     eliminarPedidos.style.display = "block";
   }
@@ -136,13 +137,33 @@ const 	eliminarPedidosBackground = document.getElementById("eliminarPedidos"),
 
 closeButtonEliminarPedidos.addEventListener("click", function(){
 	cerrarEliminarPedidos();
-	document.getElementById("formularioEliminarPedidos").reset();
+	//document.getElementById("formularioEliminarPedidos").reset();
   })
 eliminarPedidosBackground.addEventListener("click", function (event) {
     if (event.target === eliminarPedidosBackground) {
 		cerrarEliminarPedidos();
     }
   });
-document.getElementById("formularioEliminarPedidos").addEventListener("submit", function() {
-	this.reset();
+
+let idPedido = -1
+const consumerPedido = async ({ request, init }) => {
+  init = { method: 'POST', ...init  }
+  return await fetch(request, init)
+    .then(response => response.json())
+    .catch(error => console.log('Chispas', error))
+}
+
+
+document.getElementById("formularioEliminarPedidos").addEventListener("submit", function(event) {
+  event.preventDefault()
+  const init = {
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ idPedido })
+  }
+  console.log(init)
+  consumerPedido({ request: './eliminar-pedido.php', init }).then(response => console.log(response))
+  location.reload()
 });
