@@ -18,7 +18,7 @@ function mostrarFormularioTelefonos() {
   });
 
   // Obtener elementos del DOM
-const agregarTelefonoBtn = document.getElementById("agregar-telefono-btn");
+const agregarTelefonoBtn = document.getElementById("agregar-telefono-btn"); // Eliminar
 const telefonossContainer = document.querySelector(".formulario-telefonos-container");
 
 // Contador para asignar un ID único a cada div de telefono

@@ -445,8 +445,8 @@
                                     <label for="estadoCompra">Cambia el estado de tu compra</label>
                                     <select id="opciones" name="estado" required>
                                         <option value="">-- Selecciona una opción --</option>
-                                        <option value="activo" id="opciones">Activo</option>
-                                        <option value="inactivo" id="opciones">Inactivo</option>
+                                        <option value="A" id="opciones">Activo</option>
+                                        <option value="I" id="opciones">Inactivo</option>
                                     </select>
                                     <input type="submit" value="Modificar compra" id="modificarCompra">
                                 </form>

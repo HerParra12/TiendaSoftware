@@ -52,10 +52,10 @@ class CompraDAO implements CRUD {
      * @param Compra $nuevaCompra Los nuevos datos de la compra.
      * @return void
      */
-    public function actualizar($idCompra, $nuevaCompra) {
+    public function actualizar($idCompra, $nuevoEstado) {
         $mapa = array(
             ":id" => $idCompra,
-            ":estado" => $nuevaCompra->getEstado()
+            ":estado" => $nuevoEstado
         );
         $this->util->actualizar($this->link, "UPDATE Compra SET estado = :estado WHERE id_compra = :id", $mapa);
         $this->mostrarLista();

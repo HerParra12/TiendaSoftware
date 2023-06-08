@@ -1,4 +1,4 @@
-let idCompra = id
+let idCompra = -1
 //Compras
 function modificarFormularioCompras(id) {
     idCompra = id
@@ -31,7 +31,7 @@ const consumerCompras = async ({ request, init }) => {
   init = { method: 'POST', ...init  }
   return await fetch(request, init)
     .then(response => response.json())
-    .catch(() => console.log('Chispas'))
+    .catch(error => console.log('Chispas', error))
 }
 
 document.getElementById("formularioModificarCompraEstado").addEventListener("submit", function(event) {
@@ -42,4 +42,5 @@ document.getElementById("formularioModificarCompraEstado").addEventListener("sub
     console.log(`key: ${key}, value: ${value}`)
   }
   consumerCompras({ request: './actualizar-compra.php', init: { body: formData } }).then(response => console.log(response))
+  location.reload()
 });
