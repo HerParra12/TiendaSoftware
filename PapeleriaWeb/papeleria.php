@@ -645,7 +645,7 @@
                                 <button class="close-button" id="close-button-proveedores">
                                     <i class='bx bx-x-circle' style="color: white"></i>
                                 </button>
-                                <form action="agregar-proveedor.php" method="POST" class="formulario-add" id="formularioRegistroProveedor">
+                                <form class="formulario-add" id="formularioRegistroProveedor">
                                     <h2 class="create-account">Registra un proveedor</h2>
                                     <p class="cuenta-gratis">Ingresa los datos del proveedor</p>
                                     <input type="tel" name="nit" placeholder="NIT/CC (Identificación)" pattern="[0-9]{1,10}"
