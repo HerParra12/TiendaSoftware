@@ -173,7 +173,6 @@
                                     <th>Marca del producto</th>
                                     <th>Nombre del producto</th>
                                     <th>Cantidad</th>
-                                    <th>Proveedor</th>
                                     <th>Monto (c/u)</th>
                                 </tr>
                             </thead>
@@ -190,7 +189,6 @@
                                     <td>Marca del producto</td>
                                     <td>Resma de papel</td>
                                     <td>10</td>
-                                    <td>Luis Arango</td>
                                     <td>24.000</td>
                                 </tr>
                             </tbody>
@@ -323,60 +321,42 @@
                                 <button class="close-button" id="close-button-ventas">
                                     <i class='bx bx-x-circle' style="color: white"></i>
                                 </button>
-                                <form class="formulario-add" id="ventas-form">
-                                    <h2 class="create-account">Registra una venta</h2>
-                                    <p class="cuenta-gratis">Ingresa los datos de la venta</p>
-                                    <div id="productos-container">
-                                        <div class="form-group">
-                                            <label for="producto">Nombre del Producto</label>
-                                            <select id="opciones" name="producto" required>
-                                                <option value="">-- Selecciona un producto --</option>
-                                                <option value="producto1">Producto 1</option>
-                                                <option value="producto2">Producto 2</option>
-                                                <option value="producto3">Producto 3</option>
-                                            </select>
-                                        </div>
-
-                                        <div class="form-group">
-                                            <label for="cantidad">Cantidad</label>
-                                            <select id="opciones" name="cantidad" required>
-                                                <option value="">-- Selecciona una opción --</option>
-                                                <option value="uno">1</option>
-                                                <option value="dos">2</option>
-                                                <option value="tres">3</option>
-                                                <option value="cuatro">4</option>
-                                                <option value="cinco">5</option>
-                                                <option value="seis">6</option>
-                                                <option value="siete">7</option>
-                                                <option value="ocho">8</option>
-                                                <option value="nueve">9</option>
-                                                <option value="diez">10</option>
-                                                <option value="once">11</option>
-                                                <option value="doce">12</option>
-                                                <option value="trece">13</option>
-                                                <option value="catorce">14</option>
-                                                <option value="quince">15</option>
-                                                <option value="dieciseis">16</option>
-                                                <option value="diecisiete">17</option>
-                                                <option value="dieciocho">18</option>
-                                                <option value="diecinueve">19</option>
-                                                <option value="veinte">20</option>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <button id="agregar-btn" type="button"
-                                        style="border:none; background-color: transparent;">
-                                        <i class='bx bx-plus-circle' style="color: white"></i>
-                                    </button>
-
-                                    <div>
-                                        <label for="total">Total:</label>
-                                        <input type="text" id="totalVenta" name="total" readonly>
-                                    </div>
-
-                                    <input type="submit" value="Registrar venta" id="registrar-venta">
-                                </form>
+                                <h2 class="create-account" style="color: #103652">Registra un pedido</h2>
+                                <p class="cuenta-gratis" style="color: #103652">Ingresa los datos para generar la orden de pedido</p>
+                                <div id="acciones_venta">
+                                    <a href="#" id="procesar-venta-btn">
+                                    <i class='bx bx-save' style='color:#283591'></i></a>
+                                </div>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th width="30px">Código</th>
+                                            <th>Producto</th>
+                                            <th>Existencia</th>
+                                            <th width="100px">Cantidad</th>
+                                            <th>Precio</th>
+                                            <th>Precio total</th>
+                                            <th>Acción</th>  
+                                        </tr>
+                                        <tr>
+                                            <td><input type="text" name="txt_cod_producto" id="txt_cod_producto"></td>
+                                            <td id="txt-descripcion"></td>
+                                            <td id="txt_existencia"></td>
+                                            <td><input type="text" name="txt_cant_producto" id="txt_cant_producto" value="0" min="1" disabled></td>
+                                            <td id="txt_precio">0.00</td>
+                                            <td><a href="#" id="add_product_venta" class="link_add"><i class='bx bx-plus-circle'></i></td>
+                                            <td></td>
+                                        </tr>
+                                        <tr>
+                                            <th>Código</th>
+                                            <th colspan="2">Descripción</th>
+                                            <th>Cantidad</th>
+                                            <th>Precio</th>
+                                            <th>Precio total</th>
+                                            <th>Acción</th>
+                                        </tr>
+                                    </thead>
+                                </table>
                             </div>
                         </div>
 

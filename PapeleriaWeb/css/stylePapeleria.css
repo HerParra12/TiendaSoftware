@@ -533,7 +533,7 @@ body {
     margin-top: 5%;
     margin-inline: 40%;
     background-color: var(--light-blue);
-    width: 550px;
+    width: 900px;
     height: 680px;
     padding: 1.5rem;
     border-radius: 8px;
@@ -544,6 +544,7 @@ body {
     overflow-y: scroll;
     overflow-x:hidden;
 }
+
 
 /* Personalizar el scroll vertical */
 ::-webkit-scrollbar {
